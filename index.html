@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gelatops — Gelato &amp; Ice Cream Business Management Software</title>
+  <meta name="description" content="gelatops is the all-in-one management platform for artisan gelato and ice cream businesses. Manage recipes, production planning, food costs, allergens, and online orders — all in one place.">
+  <meta name="keywords" content="gelato management software, ice cream business software, gelato recipe management, production planning gelato, food cost calculator ice cream, allergen tracking gelato, gelateria management">
+  <meta name="author" content="gelatops">
+  <link rel="canonical" href="https://gelatops.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gelatops.com/">
+  <meta property="og:title" content="gelatops — Gelato &amp; Ice Cream Business Management Software">
+  <meta property="og:description" content="The all-in-one platform for artisan gelato makers. Recipes, production planning, food costs, allergen tracking and order integration — all in one place.">
+  <meta property="og:image" content="https://gelatops.com/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="gelatops">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://gelatops.com/">
+  <meta name="twitter:title" content="gelatops — Gelato &amp; Ice Cream Business Management Software">
+  <meta name="twitter:description" content="The all-in-one platform for artisan gelato makers. Recipes, production planning, food costs, allergen tracking and order integration.">
+  <meta name="twitter:image" content="https://gelatops.com/og-image.svg">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍦</text></svg>">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"gelatops","url":"https://gelatops.com","description":"All-in-one management platform for artisan gelato and ice cream businesses. Manage recipes, production planning, food costs, allergens and online orders.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Free starter plan available. Contact for pricing."},"creator":{"@type":"Organization","name":"gelatops","url":"https://gelatops.com","email":"hello@gelatops.com"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need technical knowledge to use gelatops?","acceptedAnswer":{"@type":"Answer","text":"No. The interface is designed for gelato makers, not developers. If you can use a spreadsheet, you can use gelatops."}},{"@type":"Question","name":"How does the order integration with my online shop work?","acceptedAnswer":{"@type":"Answer","text":"Your shop sends a webhook to gelatops when a customer pays. The order lands automatically in your production queue with the recipe pre-matched. We support any shop that can call a Stripe webhook."}},{"@type":"Question","name":"What happens when I submit a production plan?","acceptedAnswer":{"@type":"Answer","text":"gelatops takes a snapshot of all items and current ingredient prices, writes it to your history, and clears the queue ready for new orders. The submitted plan is read-only — your shopping list is frozen in time."}},{"@type":"Question","name":"How are allergens tracked?","acceptedAnswer":{"@type":"Answer","text":"You tag each ingredient with its EU allergens once. Every recipe that uses that ingredient automatically shows the correct allergen list. No manual recipe-level tagging needed."}},{"@type":"Question","name":"Can I use gelatops for sorbets and vegan recipes?","acceptedAnswer":{"@type":"Answer","text":"Yes. gelatops works for any frozen product — gelato, sorbets, vegan, milk-based or fruit-based. The recipe system is ingredient-agnostic."}},{"@type":"Question","name":"Is my data safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. gelatops runs on AWS with encrypted connections, automated database backups, and private infrastructure. Your recipes are your competitive advantage — we treat them accordingly."}}]}
+  </script>
+  <script async src="https://plausible.io/js/pa-PacWb93hgNx9Hs75bm5el.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES
+       ============================================= */
+    :root {
+      --navy:      #052445;
+      --blue:      #0189D3;
+      --mid-blue:  #0063A1;
+      --teal:      #00C9D0;
+      --white:     #FFFFFF;
+      --off-white: #F0F7FF;
+      --light-bg:  #E8F4FB;
+      --text-dark: #052445;
+      --text-mid:  #2D5A7E;
+      --text-muted:#6B90AA;
+      --border:    #C8DFEF;
+      --navbar-h:  60px;
+    }
+
+    @media (min-width: 768px) {
+      :root { --navbar-h: 80px; }
+    }
+
+    /* =============================================
+       RESET & BASE
+       ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    section {
+      scroll-margin-top: 60px;
+    }
+
+    @media (min-width: 768px) {
+      section { scroll-margin-top: 80px; }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul, ol { list-style: none; }
+
+    img { display: block; max-width: 100%; }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+    }
+
+    /* =============================================
+       UTILITIES
+       ============================================= */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container--narrow {
+      max-width: 900px;
+    }
+
+    .container--tight {
+      max-width: 720px;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* =============================================
+       NAVBAR
+       ============================================= */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--navbar-h);
+      padding-top: env(safe-area-inset-top);
+      background: var(--navy);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 2px 20px rgba(5, 36, 69, 0.3);
+    }
+
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      padding: 0 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .navbar__brand-icon {
+      display: block;
+      height: 36px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .navbar__brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .navbar__nav {
+      display: none;
+    }
+
+    .navbar__links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .navbar__link {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.2s;
+    }
+
+    .navbar__link:hover {
+      color: var(--white);
+    }
+
+    .navbar__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 0 20px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .navbar__cta:hover {
+      background: #0199e8;
+    }
+
+    .navbar__hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .navbar__hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+      transform-origin: center;
+    }
+
+    .navbar__hamburger[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .navbar__hamburger[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .navbar__hamburger[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .navbar__mobile-panel {
+      display: none;
+      position: fixed;
+      top: var(--navbar-h);
+      left: 0;
+      right: 0;
+      background: var(--navy);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      z-index: 999;
+    }
+
+    .navbar__mobile-panel.open {
+      display: block;
+      max-height: 400px;
+    }
+
+    .navbar__mobile-links {
+      padding: 8px 0 16px;
+    }
+
+    .navbar__mobile-link {
+      display: flex;
+      align-items: center;
+      height: 48px;
+      padding: 0 24px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .navbar__mobile-link:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+    }
+
+    .navbar__mobile-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      margin: 8px 24px 16px;
+      background: var(--teal);
+      color: var(--navy);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      transition: filter 0.2s;
+    }
+
+    .navbar__mobile-cta:hover {
+      filter: brightness(1.05);
+    }
+
+    @media (min-width: 768px) {
+      .navbar__brand-icon { height: 48px; }
+      .navbar__brand-name { font-size: 1.25rem; }
+      .navbar__nav { display: flex; align-items: center; gap: 32px; }
+      .navbar__hamburger { display: none; }
+      .navbar__mobile-panel { display: none !important; }
+    }
+
+    /* =============================================
+       HERO
+       ============================================= */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      background-image:
+        radial-gradient(ellipse at 50% 40%, #0a3a6e 0%, #052445 70%),
+        radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 28px 28px;
+      display: flex;
+      align-items: center;
+      padding-top: calc(var(--navbar-h) + 40px);
+      padding-bottom: 80px;
+    }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--teal);
+      color: var(--navy);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero__lead {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 32px;
+      max-width: 560px;
+    }
+
+    .hero__ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.15s, filter 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .btn--outline-white {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.7);
+    }
+
+    .btn--teal {
+      background: var(--teal);
+      color: var(--navy);
+    }
+
+    @media (hover: hover) {
+      .btn--primary:hover { filter: brightness(1.12); transform: translateY(-1px); }
+      .btn--outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+      .btn--teal:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    }
+
+    .hero__mockup {
+      display: none;
+    }
+
+    .mockup-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mockup-widget {
+      background: var(--off-white);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .mockup-widget__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: var(--navy);
+    }
+
+    .mockup-widget__header--teal { background: var(--teal); }
+    .mockup-widget__header--blue { background: var(--blue); }
+    .mockup-widget__header--mid { background: var(--mid-blue); }
+
+    .mockup-widget__title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .mockup-widget__title--dark { color: var(--navy); }
+
+    .mockup-widget__body {
+      padding: 10px 14px;
+    }
+
+    .mockup-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+    }
+
+    .mockup-row:last-child { border-bottom: none; }
+
+    .mockup-row__label {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .mockup-row__badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .badge--teal { background: rgba(0,201,208,0.15); color: #007d83; }
+    .badge--blue { background: rgba(1,137,211,0.12); color: var(--mid-blue); }
+    .badge--green { background: rgba(0,180,100,0.12); color: #007a46; }
+
+    .mockup-row__value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--blue);
+      font-size: 0.8rem;
+    }
+
+    .mockup-row__value--dark { color: var(--text-dark); }
+
+    .mockup-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+    }
+
+    .mockup-check:last-child { border-bottom: none; }
+
+    .mockup-check__box {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 2px solid var(--blue);
+      flex-shrink: 0;
+      background: rgba(1,137,211,0.1);
+    }
+
+    .hero__scroll {
+      display: none;
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero__scroll-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .hero__scroll-arrow {
+      animation: bounce 1.8s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding-top: calc(var(--navbar-h) + 60px);
+        padding-bottom: 100px;
+        position: relative;
+      }
+
+      .hero__inner {
+        grid-template-columns: 60fr 40fr;
+        gap: 48px;
+      }
+
+      .hero h1 { font-size: 3rem; }
+      .hero__lead { font-size: 1.1rem; }
+      .hero__ctas { flex-direction: row; }
+      .hero__mockup { display: block; }
+      .hero__scroll { display: flex; }
+    }
+
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 3.5rem; }
+    }
+
+    /* =============================================
+       PAIN POINTS
+       ============================================= */
+    .pain {
+      background: var(--off-white);
+      padding: 48px 24px;
+    }
+
+    .pain__heading {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .pain__subheading {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--text-mid);
+      margin-bottom: 40px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .pain__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pain-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(5,36,69,0.06);
+    }
+
+    .pain-card__icon {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .pain-card__title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .pain-card__desc {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    @media (min-width: 600px) {
+      .pain__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 768px) {
+      .pain { padding: 80px 0; }
+      .pain__heading { font-size: 2.5rem; }
+    }
+
+    /* =============================================
+       FEATURES
+       ============================================= */
+    .features {
+      background: var(--navy);
+      padding: 60px 24px;
+    }
+
+    .features__heading {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .features__subheading {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--teal);
+      margin-bottom: 48px;
+    }
+
+    .features__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .feature-card__icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-card__title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .feature-card__desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    @media (hover: hover) {
+      .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+        border-color: rgba(255,255,255,0.25);
+      }
+    }
+
+    @media (min-width: 600px) {
+      .features__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 900px) {
+      .features__grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    @media (min-width: 768px) {
+      .features { padding: 80px 0; }
+      .features__heading { font-size: 2.5rem; }
+      .features__subheading { font-size: 1.1rem; }
+    }
+
+    /* =============================================
+       HOW IT WORKS
+       ============================================= */
+    .how {
+      background: var(--light-bg);
+      padding: 48px 24px;
+    }
+
+    .how__heading {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 48px;
+    }
+
+    .how__steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Vertical dotted line for mobile */
+    .how__steps::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: 40px;
+      width: 2px;
+      background: repeating-linear-gradient(
+        to bottom,
+        var(--blue) 0px,
+        var(--blue) 6px,
+        transparent 6px,
+        transparent 14px
+      );
+      z-index: 0;
+    }
+
+    .how__step {
+      display: flex;
+      gap: 20px;
+      padding: 24px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .how__step-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .how__step-content { flex: 1; }
+
+    .how__step-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .how__step-desc {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .how__arrow {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .how { padding: 80px 0; }
+      .how__heading { font-size: 2.5rem; }
+
+      .how__steps {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0;
+      }
+
+      .how__steps::before { display: none; }
+
+      .how__step {
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 16px;
+        gap: 14px;
+      }
+
+      .how__step-content { text-align: center; }
+
+      .how__arrow {
+        display: flex;
+        align-items: center;
+        padding-top: 12px;
+        color: var(--blue);
+        font-size: 1.4rem;
+        flex-shrink: 0;
+        opacity: 0.6;
+      }
+    }
+
+    /* =============================================
+       PRICING
+       ============================================= */
+    .pricing {
+      background: var(--white);
+      padding: 48px 24px;
+    }
+
+    .pricing__heading {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .pricing__subheading {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+
+    .pricing__disclaimer {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .pricing__disclaimer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,201,208,0.12);
+      color: var(--text-dark);
+      border: 1px solid rgba(0,201,208,0.4);
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .pricing__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pricing-card--featured {
+      background: var(--navy);
+      border: 2px solid var(--teal);
+      position: relative;
+    }
+
+    .pricing-card__popular {
+      display: inline-flex;
+      align-items: center;
+      background: var(--teal);
+      color: var(--navy);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .pricing-card__name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .pricing-card--featured .pricing-card__name { color: var(--white); }
+
+    .pricing-card__price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 24px;
+    }
+
+    .pricing-card__amount {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+
+    .pricing-card--featured .pricing-card__amount { color: var(--white); }
+
+    .pricing-card__period {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .pricing-card--featured .pricing-card__period { color: rgba(255,255,255,0.6); }
+
+    .pricing-card__features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+
+    .pricing-card__feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+
+    .pricing-card--featured .pricing-card__feature { color: rgba(255,255,255,0.85); }
+
+    .pricing-card__check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(0,201,208,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .pricing-card--featured .pricing-card__check {
+      background: rgba(0,201,208,0.25);
+    }
+
+    .pricing-card__check svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    .pricing-card__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: filter 0.2s, transform 0.15s;
+    }
+
+    .pricing-card__btn--navy {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .pricing-card__btn--teal {
+      background: var(--teal);
+      color: var(--navy);
+    }
+
+    @media (hover: hover) {
+      .pricing-card__btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    }
+
+    .pricing__note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .pricing { padding: 80px 0; }
+      .pricing__heading { font-size: 2.5rem; }
+      .pricing__cards {
+        flex-direction: row;
+        align-items: stretch;
+      }
+      .pricing-card {
+        flex: 1;
+      }
+      .pricing-card--featured {
+        transform: scale(1.03);
+        box-shadow: 0 20px 48px rgba(5,36,69,0.25);
+      }
+    }
+
+    /* =============================================
+       FAQ
+       ============================================= */
+    .faq {
+      background: var(--off-white);
+      padding: 48px 24px;
+    }
+
+    .faq__heading {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 40px;
+    }
+
+    .faq__list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq__item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq__item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq__question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-height: 64px;
+      padding: 20px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+    }
+
+    .faq__question-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+
+    .faq__chevron {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--blue);
+      transition: transform 0.3s ease;
+    }
+
+    .faq__item.open .faq__chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq__answer-inner {
+      padding-bottom: 20px;
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    @media (min-width: 768px) {
+      .faq { padding: 80px 0; }
+      .faq__heading { font-size: 2.5rem; }
+    }
+
+    /* =============================================
+       CTA SECTION
+       ============================================= */
+    .cta-section {
+      background: linear-gradient(135deg, #052445 0%, #0a3a6e 50%, #052445 100%);
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .cta-section__heading {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .cta-section__lead {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 36px;
+    }
+
+    .cta-section__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60px;
+      padding: 18px 40px;
+      background: var(--teal);
+      color: var(--navy);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: transform 0.15s, filter 0.15s;
+    }
+
+    @media (hover: hover) {
+      .cta-section__btn:hover {
+        transform: scale(1.02);
+        filter: brightness(1.05);
+      }
+    }
+
+    .cta-section__note {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .cta-section__heading { font-size: 2.5rem; }
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    .footer {
+      background: #021830;
+      padding-top: 60px;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding-bottom: 48px;
+    }
+
+    .footer__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer__brand-icon {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .footer__brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+
+    .footer__brand-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .footer__col-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .footer__link {
+      display: flex;
+      align-items: center;
+      min-height: 36px;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.2s;
+    }
+
+    .footer__link:hover { color: var(--white); }
+
+    .footer__built-text {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    .footer__copyright {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    @media (min-width: 600px) {
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 900px) {
+      .footer__grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    }
+
+    /* =============================================
+       ANIMATIONS
+       ============================================= */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .fade-in--delay-1 { transition-delay: 0.1s; }
+      .fade-in--delay-2 { transition-delay: 0.2s; }
+      .fade-in--delay-3 { transition-delay: 0.3s; }
+      .fade-in--delay-4 { transition-delay: 0.4s; }
+      .fade-in--delay-5 { transition-delay: 0.5s; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVBAR
+       ========================================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <!-- Brand -->
+      <a href="/" class="navbar__brand" aria-label="gelatops home">
+        <svg class="navbar__brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="100 430 200 390" height="36" aria-hidden="true">
+          <path fill="#052445" d="M228.958 437.561C232.32 437.875 235.292 439.531 236.118 442.905C237.239 447.484 229.766 450.597 226.529 452.471C218.956 456.855 215.067 461.502 210.097 468.426C219.735 476.777 222.669 482.468 222.476 495.102C248.418 509.063 261.525 533.15 255.623 562.592C261.078 565.737 267.028 570.113 271.439 574.58C282.243 585.728 288.181 600.706 287.95 616.227C287.679 635.029 279.947 648.275 266.937 660.982L267.026 670.305C267.1 691.263 260.385 696.968 240.045 697.027C238.499 702.137 236.025 707.708 234.145 712.793C223.004 742.921 211.656 772.972 200.377 803.047C197.929 809.575 193.051 812.88 187.732 806.561C183.068 795.442 179.444 784.014 175.198 772.766C165.624 747.407 156.959 722.053 147.128 696.76C144.544 696.811 141.959 696.822 139.375 696.793C117.961 696.391 119.41 676.158 119.797 660.97C114.116 655.777 109.824 650.77 106.044 644.005C98.5898 630.528 96.7521 614.655 100.93 599.831C105.847 582.539 115.78 571.189 131.156 562.513C125.203 532.311 139.486 507.955 165.85 493.75C167.152 473.336 178.332 463.161 198.715 463.656C205.491 451.63 215.942 442.329 228.958 437.561Z"/>
+          <path fill="#0189D3" d="M164.493 568.149C177.971 570.116 189.699 575.736 198.018 586.785C205.772 596.883 209.169 609.659 207.455 622.274C205.791 633.967 200.5 643.339 191.744 651.162C176.45 651.46 153.23 651.998 138.279 651.291L127.383 651.528C126.201 650.321 125.033 649.1 123.879 647.867C115.057 638.398 110.623 626.666 111.179 613.691C111.815 600.986 117.446 589.046 126.845 580.471C137.468 570.926 150.477 567.398 164.493 568.149Z"/>
+          <path fill="white" d="M127.383 651.528C126.201 650.321 125.033 649.1 123.879 647.867C115.057 638.398 110.623 626.666 111.179 613.691C111.815 600.986 117.446 589.046 126.845 580.471C137.468 570.926 150.477 567.398 164.493 568.149C162.362 569.264 159.873 569.597 157.529 570.149C141.82 573.853 130.234 584.638 124.818 599.958C120.781 611.65 121.503 624.46 126.829 635.624C128.393 638.918 138.172 650.829 138.279 651.291L127.383 651.528Z"/>
+          <path fill="#0063A1" d="M224.796 568.188C226.02 568.123 227.246 568.099 228.471 568.117C241.394 568.281 253.697 573.684 262.56 583.088C271.356 592.17 276.096 604.427 275.698 617.062C275.263 631.44 269.191 641.61 259.058 651.179C254.15 651.368 248.616 651.283 243.657 651.314L208.883 651.291C215.04 640.461 219.689 631.432 220.142 618.488C220.738 601.444 215.512 587.029 203.938 574.603C211.481 570.557 216.331 568.981 224.796 568.188Z"/>
+          <path fill="#00C9D0" d="M169.094 505.746L172.621 511.087C187.096 525.649 206.352 522.476 218.486 506.817C237.719 518.536 247.396 535.052 244.29 558.014C227.387 553.847 208.231 555.905 194.139 566.783C181.571 558.241 168.41 554.291 153.093 556.024C149.71 556.46 145.982 557.359 142.616 558.086C141.618 551.953 141.8 545.686 143.15 539.622C146.772 523.534 155.756 514.211 169.094 505.746Z"/>
+          <path fill="white" d="M169.094 505.746L172.621 511.087C158.03 523.71 152.237 536.512 153.093 556.024C149.71 556.46 145.982 557.359 142.616 558.086C141.618 551.953 141.8 545.686 143.15 539.622C146.772 523.534 155.756 514.211 169.094 505.746Z"/>
+          <path fill="white" d="M132.172 663.605L254.481 663.612C254.577 669.095 255.437 677.476 253.083 682.191C250.824 684.422 249.439 684.821 246.269 684.841C217.083 685.023 187.893 684.895 158.706 684.973C151.139 684.994 143.435 685.211 135.921 684.363C135.543 684.158 134.527 683.42 134.334 683.136C130.872 678.066 132.045 669.682 132.172 663.605Z"/>
+          <path fill="white" d="M193.498 707.048C201.676 712.043 209.7 717.286 217.559 722.769C209.673 728.158 201.711 733.434 193.674 738.596C191.418 737.581 172.901 724.68 169.888 722.628C177.283 717.039 185.633 712.028 193.498 707.048Z"/>
+          <path fill="#0189D3" d="M182.465 503.442C173.024 492.618 182.384 474.239 192.762 476.58C193.951 478.045 193.513 478.366 193.426 480.674C198.529 484.514 200.319 485.407 205.47 480.731C211.514 488.467 212.707 497.59 204.188 504.194C200.566 507.042 195.931 508.275 191.372 507.6C188.055 507.13 184.954 505.682 182.465 503.442Z"/>
+          <path fill="white" d="M182.465 503.442C173.024 492.618 182.384 474.239 192.762 476.58C193.951 478.045 193.513 478.366 193.426 480.674C188.769 487.238 186.998 490.258 189.101 498.343L182.465 503.442Z"/>
+          <path fill="white" d="M193.584 753.018C196.711 754.831 200.637 757.687 203.693 759.779C200.547 768.503 196.874 777.61 193.513 786.3C191.418 783.976 185.035 764.555 183.516 760.154L193.584 753.018Z"/>
+          <path fill="white" d="M201.84 697.147C209.358 696.847 219.08 697.072 226.745 697.052L222.94 707.958C222.306 709.608 222.691 709.356 221.468 710.137C217.091 709.309 205.896 700.234 201.84 697.147Z"/>
+          <path fill="white" d="M160.394 697.038L185.084 696.962C182.723 698.832 179.912 700.788 177.455 702.585C173.383 705.241 169.206 708.187 165.175 710.943C163.699 706.268 162.105 701.632 160.394 697.038Z"/>
+        </svg>
+        <span class="navbar__brand-name">gelatops</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="navbar__nav" aria-label="Main navigation">
+        <ul class="navbar__links" role="list">
+          <li><a href="#features" class="navbar__link">Features</a></li>
+          <li><a href="#how-it-works" class="navbar__link">How It Works</a></li>
+          <li><a href="#pricing" class="navbar__link">Pricing</a></li>
+          <li><a href="#faq" class="navbar__link">FAQ</a></li>
+        </ul>
+        <a href="mailto:hello@gelatops.com" class="navbar__cta">Get in Touch</a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button
+        class="navbar__hamburger"
+        id="hamburger"
+        aria-expanded="false"
+        aria-controls="mobile-panel"
+        aria-label="Open navigation menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <div class="navbar__mobile-panel" id="mobile-panel" role="dialog" aria-label="Mobile navigation">
+      <nav aria-label="Mobile navigation links">
+        <ul class="navbar__mobile-links" role="list">
+          <li><a href="#features" class="navbar__mobile-link">Features</a></li>
+          <li><a href="#how-it-works" class="navbar__mobile-link">How It Works</a></li>
+          <li><a href="#pricing" class="navbar__mobile-link">Pricing</a></li>
+          <li><a href="#faq" class="navbar__mobile-link">FAQ</a></li>
+        </ul>
+        <a href="mailto:hello@gelatops.com" class="navbar__mobile-cta">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==========================================
+         HERO
+         ========================================== -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero__inner">
+          <!-- Left column -->
+          <div class="hero__content">
+            <div class="hero__badge">
+              <span aria-hidden="true">🍦</span> Built for artisan gelato makers
+            </div>
+            <h1 id="hero-heading">Run your gelateria.<br>Not your spreadsheets.</h1>
+            <p class="hero__lead">
+              gelatops is the all-in-one management platform for artisan gelato and ice cream businesses — recipes, production planning, costs, orders, allergens and more. All in one place.
+            </p>
+            <div class="hero__ctas">
+              <a href="mailto:hello@gelatops.com" class="btn btn--primary">Get in Touch</a>
+              <a href="#how-it-works" class="btn btn--outline-white">See how it works</a>
+            </div>
+          </div>
+
+          <!-- Right column: Dashboard mockup -->
+          <div class="hero__mockup" aria-hidden="true">
+            <div class="mockup-card">
+
+              <!-- Production Plan widget -->
+              <div class="mockup-widget">
+                <div class="mockup-widget__header mockup-widget__header--teal">
+                  <span class="mockup-widget__title mockup-widget__title--dark">Production Plan — Thu 20 Mar</span>
+                </div>
+                <div class="mockup-widget__body">
+                  <div class="mockup-row">
+                    <span class="mockup-row__label">Stracciatella</span>
+                    <span class="mockup-row__badge badge--teal">10 L</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-row__label">Pistachio</span>
+                    <span class="mockup-row__badge badge--blue">5 L</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-row__label">Dark Chocolate</span>
+                    <span class="mockup-row__badge badge--teal">8 L</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-row__label">Mango Sorbet</span>
+                    <span class="mockup-row__badge badge--green">6 L</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cost Summary widget -->
+              <div class="mockup-widget">
+                <div class="mockup-widget__header mockup-widget__header--blue">
+                  <span class="mockup-widget__title">Cost Summary</span>
+                </div>
+                <div class="mockup-widget__body">
+                  <div class="mockup-row">
+                    <span class="mockup-row__label">Total ingredients</span>
+                    <span class="mockup-row__value">1,240 SEK</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-row__label">Labour estimate</span>
+                    <span class="mockup-row__value">320 SEK</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span class="mockup-row__label">Total cost / plan</span>
+                    <span class="mockup-row__value">1,560 SEK</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shopping List widget -->
+              <div class="mockup-widget">
+                <div class="mockup-widget__header mockup-widget__header--mid">
+                  <span class="mockup-widget__title">Shopping List</span>
+                </div>
+                <div class="mockup-widget__body">
+                  <div class="mockup-check">
+                    <div class="mockup-check__box"></div>
+                    <span>Whole milk · 12 L</span>
+                  </div>
+                  <div class="mockup-check">
+                    <div class="mockup-check__box"></div>
+                    <span>Heavy cream · 6 L</span>
+                  </div>
+                  <div class="mockup-check">
+                    <div class="mockup-check__box"></div>
+                    <span>Caster sugar · 2.4 kg</span>
+                  </div>
+                  <div class="mockup-check">
+                    <div class="mockup-check__box"></div>
+                    <span>Pistachios (raw) · 480 g</span>
+                  </div>
+                  <div class="mockup-check">
+                    <div class="mockup-check__box"></div>
+                    <span>Dark chocolate 70% · 1.6 kg</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-label">Scroll</span>
+        <svg class="hero__scroll-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 4V16M10 16L5 11M10 16L15 11" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAIN POINTS
+         ========================================== -->
+    <section class="pain" aria-labelledby="pain-heading">
+      <div class="container">
+        <h2 class="pain__heading fade-in" id="pain-heading">Sound familiar?</h2>
+        <p class="pain__subheading fade-in fade-in--delay-1">Managing a gelateria without the right tools means...</p>
+        <div class="pain__grid">
+          <div class="pain-card fade-in fade-in--delay-1">
+            <span class="pain-card__icon" aria-hidden="true">🧮</span>
+            <h3 class="pain-card__title">Recipes in scattered spreadsheets</h3>
+            <p class="pain-card__desc">Version chaos, broken formulas, no cost visibility. Which tab is the latest version of Stracciatella?</p>
+          </div>
+          <div class="pain-card fade-in fade-in--delay-2">
+            <span class="pain-card__icon" aria-hidden="true">📋</span>
+            <h3 class="pain-card__title">Shopping lists made by hand</h3>
+            <p class="pain-card__desc">Recalculated every production run, prone to errors. One miscalculation means a mid-run trip back to the supplier.</p>
+          </div>
+          <div class="pain-card fade-in fade-in--delay-1">
+            <span class="pain-card__icon" aria-hidden="true">💸</span>
+            <h3 class="pain-card__title">No real-time food cost tracking</h3>
+            <p class="pain-card__desc">You don't know your margin until it's too late. Prices change; your spreadsheet doesn't update itself.</p>
+          </div>
+          <div class="pain-card fade-in fade-in--delay-2">
+            <span class="pain-card__icon" aria-hidden="true">⚠️</span>
+            <h3 class="pain-card__title">Allergen compliance done manually</h3>
+            <p class="pain-card__desc">One missed ingredient can be a legal and safety risk. EU food labelling law doesn't forgive spreadsheet oversights.</p>
+          </div>
+          <div class="pain-card fade-in fade-in--delay-1">
+            <span class="pain-card__icon" aria-hidden="true">📦</span>
+            <h3 class="pain-card__title">Orders disconnected from production</h3>
+            <p class="pain-card__desc">Customer orders never automatically feed your production plan. More copying, more errors, more time lost.</p>
+          </div>
+          <div class="pain-card fade-in fade-in--delay-2">
+            <span class="pain-card__icon" aria-hidden="true">🏷️</span>
+            <h3 class="pain-card__title">Labels printed from Word files</h3>
+            <p class="pain-card__desc">Time-consuming and not automatically updated when recipes change. A recipe tweak means a new label design session.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         FEATURES
+         ========================================== -->
+    <section class="features" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <h2 class="features__heading fade-in" id="features-heading">Everything your gelateria needs</h2>
+        <p class="features__subheading fade-in fade-in--delay-1">One platform. All the tools.</p>
+        <div class="features__grid">
+          <article class="feature-card fade-in fade-in--delay-1">
+            <span class="feature-card__icon" aria-hidden="true">🍦</span>
+            <h3 class="feature-card__title">Recipe Management</h3>
+            <p class="feature-card__desc">Build and manage all your ice cream and sorbet recipes. Set ingredient amounts per litre, track which recipes use which ingredients, and keep everything versioned and organised.</p>
+          </article>
+          <article class="feature-card fade-in fade-in--delay-2">
+            <span class="feature-card__icon" aria-hidden="true">💰</span>
+            <h3 class="feature-card__title">Real-Time Food Cost</h3>
+            <p class="feature-card__desc">See the cost of every recipe at 1L, 5L, 10L and 15L instantly. Update ingredient prices once and every recipe recalculates automatically. Know your margins before you produce.</p>
+          </article>
+          <article class="feature-card fade-in fade-in--delay-3">
+            <span class="feature-card__icon" aria-hidden="true">📋</span>
+            <h3 class="feature-card__title">Production Planning</h3>
+            <p class="feature-card__desc">Build production plans manually or let incoming orders populate them automatically. Submit a plan and get a frozen shopping list with prices locked at that moment in time.</p>
+          </article>
+          <article class="feature-card fade-in fade-in--delay-1">
+            <span class="feature-card__icon" aria-hidden="true">🛒</span>
+            <h3 class="feature-card__title">Smart Shopping Lists</h3>
+            <p class="feature-card__desc">Aggregate ingredient requirements across your entire production plan in one click. Export to CSV or print. Know exactly how much of everything to buy before you go to market.</p>
+          </article>
+          <article class="feature-card fade-in fade-in--delay-2">
+            <span class="feature-card__icon" aria-hidden="true">⚠️</span>
+            <h3 class="feature-card__title">Allergen Tracking</h3>
+            <p class="feature-card__desc">Tag ingredients with EU allergens once. Every recipe automatically inherits the correct allergen list. Stay compliant with food labelling regulations without extra manual work.</p>
+          </article>
+          <article class="feature-card fade-in fade-in--delay-3">
+            <span class="feature-card__icon" aria-hidden="true">🔗</span>
+            <h3 class="feature-card__title">Order Integration</h3>
+            <p class="feature-card__desc">Connect your online shop via Stripe webhooks. Customer orders automatically land in your production queue with the right recipe IDs. No double entry, no missed orders.</p>
+          </article>
+          <article class="feature-card fade-in fade-in--delay-1">
+            <span class="feature-card__icon" aria-hidden="true">⚗️</span>
+            <h3 class="feature-card__title">Smart Recipe Balancing</h3>
+            <p class="feature-card__desc">Automatically adjust ingredient ratios within seconds to achieve the perfect texture at serving temperature — for both gelato and sorbets. Fine-tune sweetness levels on the fly while the system preserves the texture profile you've dialled in.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         HOW IT WORKS
+         ========================================== -->
+    <section class="how" id="how-it-works" aria-labelledby="how-heading">
+      <div class="container">
+        <h2 class="how__heading fade-in" id="how-heading">From order to production in minutes</h2>
+        <div class="how__steps">
+          <div class="how__step fade-in fade-in--delay-1">
+            <div class="how__step-badge" aria-hidden="true">1</div>
+            <div class="how__step-content">
+              <h3 class="how__step-title">Set up your recipes</h3>
+              <p class="how__step-desc">Add your gelato and sorbet recipes with ingredient amounts per litre. Set prices for each ingredient.</p>
+            </div>
+          </div>
+          <div class="how__arrow" aria-hidden="true">→</div>
+          <div class="how__step fade-in fade-in--delay-2">
+            <div class="how__step-badge" aria-hidden="true">2</div>
+            <div class="how__step-content">
+              <h3 class="how__step-title">Receive orders automatically</h3>
+              <p class="how__step-desc">Your online shop sends orders via webhook. They land in the global production queue with recipe IDs already matched.</p>
+            </div>
+          </div>
+          <div class="how__arrow" aria-hidden="true">→</div>
+          <div class="how__step fade-in fade-in--delay-3">
+            <div class="how__step-badge" aria-hidden="true">3</div>
+            <div class="how__step-content">
+              <h3 class="how__step-title">Build your production plan</h3>
+              <p class="how__step-desc">Review the queue, move orders to dated production runs, add manual items, check the cost summary.</p>
+            </div>
+          </div>
+          <div class="how__arrow" aria-hidden="true">→</div>
+          <div class="how__step fade-in fade-in--delay-4">
+            <div class="how__step-badge" aria-hidden="true">4</div>
+            <div class="how__step-content">
+              <h3 class="how__step-title">Submit and shop</h3>
+              <p class="how__step-desc">Submit the plan. Get a frozen shopping list with quantities and prices locked. Go shopping. Make gelato.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PRICING
+         ========================================== -->
+    <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
+      <div class="container">
+        <h2 class="pricing__heading fade-in" id="pricing-heading">Simple, honest pricing</h2>
+        <p class="pricing__subheading fade-in fade-in--delay-1">No hidden fees. Cancel anytime.</p>
+        <div class="pricing__disclaimer fade-in fade-in--delay-2">
+          <span class="pricing__disclaimer-badge">
+            <span aria-hidden="true">💡</span> Example pricing — get in touch for a quote tailored to your business
+          </span>
+        </div>
+
+        <div class="pricing__cards">
+
+          <!-- Starter -->
+          <div class="pricing-card fade-in fade-in--delay-1">
+            <h3 class="pricing-card__name">Starter</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">Free</span>
+            </div>
+            <ul class="pricing-card__features" role="list">
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Up to 10 recipes
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Ingredient &amp; cost tracking
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Shopping list export
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                1 user
+              </li>
+            </ul>
+            <a href="mailto:hello@gelatops.com" class="pricing-card__btn pricing-card__btn--navy">Get in Touch</a>
+          </div>
+
+          <!-- Studio (featured) -->
+          <div class="pricing-card pricing-card--featured fade-in fade-in--delay-2">
+            <div class="pricing-card__popular">Most Popular</div>
+            <h3 class="pricing-card__name">Studio</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">€49</span>
+              <span class="pricing-card__period">/mo</span>
+            </div>
+            <ul class="pricing-card__features" role="list">
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Unlimited recipes
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Production planning
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Allergen tracking
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Order webhook integration (1 shop)
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Up to 5 users
+              </li>
+            </ul>
+            <a href="mailto:hello@gelatops.com" class="pricing-card__btn pricing-card__btn--teal">Get in Touch</a>
+          </div>
+
+          <!-- Pro -->
+          <div class="pricing-card fade-in fade-in--delay-3">
+            <h3 class="pricing-card__name">Pro</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">€99</span>
+              <span class="pricing-card__period">/mo</span>
+            </div>
+            <ul class="pricing-card__features" role="list">
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Everything in Studio
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Multiple shop integrations
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Label generation <em style="font-style:normal;font-size:0.8em;opacity:0.7">(coming soon)</em>
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Smart Recipe Balancing
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Priority support
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Unlimited users
+              </li>
+            </ul>
+            <a href="mailto:hello@gelatops.com" class="pricing-card__btn pricing-card__btn--navy">Get in Touch</a>
+          </div>
+
+        </div>
+        <p class="pricing__note">* Prices shown are illustrative. Contact us for actual pricing.</p>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         FAQ
+         ========================================== -->
+    <section class="faq" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 class="faq__heading fade-in" id="faq-heading">Frequently asked questions</h2>
+        <div class="faq__list fade-in fade-in--delay-1" role="list">
+
+          <article class="faq__item" role="listitem">
+            <button class="faq__question" aria-expanded="false">
+              <span class="faq__question-text">Do I need technical knowledge to use gelatops?</span>
+              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                No. The interface is designed for gelato makers, not developers. If you can use a spreadsheet, you can use gelatops.
+              </div>
+            </div>
+          </article>
+
+          <article class="faq__item" role="listitem">
+            <button class="faq__question" aria-expanded="false">
+              <span class="faq__question-text">How does the order integration with my online shop work?</span>
+              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Your shop sends a webhook to gelatops when a customer pays. The order lands automatically in your production queue with the recipe pre-matched. We support any shop that can call a Stripe webhook.
+              </div>
+            </div>
+          </article>
+
+          <article class="faq__item" role="listitem">
+            <button class="faq__question" aria-expanded="false">
+              <span class="faq__question-text">What happens when I submit a production plan?</span>
+              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                gelatops takes a snapshot of all items and current ingredient prices, writes it to your history, and clears the queue ready for new orders. The submitted plan is read-only — your shopping list is frozen in time.
+              </div>
+            </div>
+          </article>
+
+          <article class="faq__item" role="listitem">
+            <button class="faq__question" aria-expanded="false">
+              <span class="faq__question-text">How are allergens tracked?</span>
+              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                You tag each ingredient with its EU allergens once. Every recipe that uses that ingredient automatically shows the correct allergen list. No manual recipe-level tagging needed.
+              </div>
+            </div>
+          </article>
+
+          <article class="faq__item" role="listitem">
+            <button class="faq__question" aria-expanded="false">
+              <span class="faq__question-text">Can I use gelatops for sorbets and vegan recipes?</span>
+              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Yes. gelatops works for any frozen product — gelato, sorbets, vegan, milk-based or fruit-based. The recipe system is ingredient-agnostic.
+              </div>
+            </div>
+          </article>
+
+          <article class="faq__item" role="listitem">
+            <button class="faq__question" aria-expanded="false">
+              <span class="faq__question-text">Is my data safe?</span>
+              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Yes. gelatops runs on AWS with encrypted connections, automated database backups, and private infrastructure. Your recipes are your competitive advantage — we treat them accordingly.
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CTA SECTION
+         ========================================== -->
+    <section class="cta-section" id="contact" aria-labelledby="cta-heading">
+      <h2 class="cta-section__heading fade-in" id="cta-heading">Ready to run a better gelateria?</h2>
+      <p class="cta-section__lead fade-in fade-in--delay-1">Get in touch and we'll get you set up.</p>
+      <a href="mailto:hello@gelatops.com" class="cta-section__btn fade-in fade-in--delay-2">
+        Email us at hello@gelatops.com
+      </a>
+      <p class="cta-section__note fade-in fade-in--delay-3">We reply within 24 hours.</p>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Column 1: Branding -->
+        <div>
+          <div class="footer__brand">
+            <svg class="footer__brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="100 430 200 390" height="40" aria-hidden="true">
+              <path fill="#052445" d="M228.958 437.561C232.32 437.875 235.292 439.531 236.118 442.905C237.239 447.484 229.766 450.597 226.529 452.471C218.956 456.855 215.067 461.502 210.097 468.426C219.735 476.777 222.669 482.468 222.476 495.102C248.418 509.063 261.525 533.15 255.623 562.592C261.078 565.737 267.028 570.113 271.439 574.58C282.243 585.728 288.181 600.706 287.95 616.227C287.679 635.029 279.947 648.275 266.937 660.982L267.026 670.305C267.1 691.263 260.385 696.968 240.045 697.027C238.499 702.137 236.025 707.708 234.145 712.793C223.004 742.921 211.656 772.972 200.377 803.047C197.929 809.575 193.051 812.88 187.732 806.561C183.068 795.442 179.444 784.014 175.198 772.766C165.624 747.407 156.959 722.053 147.128 696.76C144.544 696.811 141.959 696.822 139.375 696.793C117.961 696.391 119.41 676.158 119.797 660.97C114.116 655.777 109.824 650.77 106.044 644.005C98.5898 630.528 96.7521 614.655 100.93 599.831C105.847 582.539 115.78 571.189 131.156 562.513C125.203 532.311 139.486 507.955 165.85 493.75C167.152 473.336 178.332 463.161 198.715 463.656C205.491 451.63 215.942 442.329 228.958 437.561Z"/>
+              <path fill="#0189D3" d="M164.493 568.149C177.971 570.116 189.699 575.736 198.018 586.785C205.772 596.883 209.169 609.659 207.455 622.274C205.791 633.967 200.5 643.339 191.744 651.162C176.45 651.46 153.23 651.998 138.279 651.291L127.383 651.528C126.201 650.321 125.033 649.1 123.879 647.867C115.057 638.398 110.623 626.666 111.179 613.691C111.815 600.986 117.446 589.046 126.845 580.471C137.468 570.926 150.477 567.398 164.493 568.149Z"/>
+              <path fill="white" d="M127.383 651.528C126.201 650.321 125.033 649.1 123.879 647.867C115.057 638.398 110.623 626.666 111.179 613.691C111.815 600.986 117.446 589.046 126.845 580.471C137.468 570.926 150.477 567.398 164.493 568.149C162.362 569.264 159.873 569.597 157.529 570.149C141.82 573.853 130.234 584.638 124.818 599.958C120.781 611.65 121.503 624.46 126.829 635.624C128.393 638.918 138.172 650.829 138.279 651.291L127.383 651.528Z"/>
+              <path fill="#0063A1" d="M224.796 568.188C226.02 568.123 227.246 568.099 228.471 568.117C241.394 568.281 253.697 573.684 262.56 583.088C271.356 592.17 276.096 604.427 275.698 617.062C275.263 631.44 269.191 641.61 259.058 651.179C254.15 651.368 248.616 651.283 243.657 651.314L208.883 651.291C215.04 640.461 219.689 631.432 220.142 618.488C220.738 601.444 215.512 587.029 203.938 574.603C211.481 570.557 216.331 568.981 224.796 568.188Z"/>
+              <path fill="#00C9D0" d="M169.094 505.746L172.621 511.087C187.096 525.649 206.352 522.476 218.486 506.817C237.719 518.536 247.396 535.052 244.29 558.014C227.387 553.847 208.231 555.905 194.139 566.783C181.571 558.241 168.41 554.291 153.093 556.024C149.71 556.46 145.982 557.359 142.616 558.086C141.618 551.953 141.8 545.686 143.15 539.622C146.772 523.534 155.756 514.211 169.094 505.746Z"/>
+              <path fill="white" d="M169.094 505.746L172.621 511.087C158.03 523.71 152.237 536.512 153.093 556.024C149.71 556.46 145.982 557.359 142.616 558.086C141.618 551.953 141.8 545.686 143.15 539.622C146.772 523.534 155.756 514.211 169.094 505.746Z"/>
+              <path fill="white" d="M132.172 663.605L254.481 663.612C254.577 669.095 255.437 677.476 253.083 682.191C250.824 684.422 249.439 684.821 246.269 684.841C217.083 685.023 187.893 684.895 158.706 684.973C151.139 684.994 143.435 685.211 135.921 684.363C135.543 684.158 134.527 683.42 134.334 683.136C130.872 678.066 132.045 669.682 132.172 663.605Z"/>
+              <path fill="white" d="M193.498 707.048C201.676 712.043 209.7 717.286 217.559 722.769C209.673 728.158 201.711 733.434 193.674 738.596C191.418 737.581 172.901 724.68 169.888 722.628C177.283 717.039 185.633 712.028 193.498 707.048Z"/>
+              <path fill="#0189D3" d="M182.465 503.442C173.024 492.618 182.384 474.239 192.762 476.58C193.951 478.045 193.513 478.366 193.426 480.674C198.529 484.514 200.319 485.407 205.47 480.731C211.514 488.467 212.707 497.59 204.188 504.194C200.566 507.042 195.931 508.275 191.372 507.6C188.055 507.13 184.954 505.682 182.465 503.442Z"/>
+              <path fill="white" d="M182.465 503.442C173.024 492.618 182.384 474.239 192.762 476.58C193.951 478.045 193.513 478.366 193.426 480.674C188.769 487.238 186.998 490.258 189.101 498.343L182.465 503.442Z"/>
+              <path fill="white" d="M193.584 753.018C196.711 754.831 200.637 757.687 203.693 759.779C200.547 768.503 196.874 777.61 193.513 786.3C191.418 783.976 185.035 764.555 183.516 760.154L193.584 753.018Z"/>
+              <path fill="white" d="M201.84 697.147C209.358 696.847 219.08 697.072 226.745 697.052L222.94 707.958C222.306 709.608 222.691 709.356 221.468 710.137C217.091 709.309 205.896 700.234 201.84 697.147Z"/>
+              <path fill="white" d="M160.394 697.038L185.084 696.962C182.723 698.832 179.912 700.788 177.455 702.585C173.383 705.241 169.206 708.187 165.175 710.943C163.699 706.268 162.105 701.632 160.394 697.038Z"/>
+            </svg>
+            <span class="footer__brand-name">gelatops</span>
+          </div>
+          <p class="footer__brand-desc">The management platform for artisan gelato makers.</p>
+        </div>
+
+        <!-- Column 2: Product -->
+        <div>
+          <h4 class="footer__col-title">Product</h4>
+          <ul class="footer__links" role="list">
+            <li><a href="#features" class="footer__link">Features</a></li>
+            <li><a href="#pricing" class="footer__link">Pricing</a></li>
+            <li><a href="#how-it-works" class="footer__link">How It Works</a></li>
+            <li><a href="#faq" class="footer__link">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact -->
+        <div>
+          <h4 class="footer__col-title">Contact</h4>
+          <ul class="footer__links" role="list">
+            <li><a href="mailto:hello@gelatops.com" class="footer__link">hello@gelatops.com</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Built with -->
+        <div>
+          <h4 class="footer__col-title">Built with</h4>
+          <p class="footer__built-text">Running on AWS. Analytics by Plausible.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">© 2026 gelatops. Made with 🍦 for gelato makers.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT
+       ========================================== -->
+  <script>
+    // 1. Navbar scroll shadow
+    (function () {
+      var navbar = document.getElementById('navbar');
+      function onScroll() {
+        if (window.scrollY > 20) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // 2. Hamburger menu
+    (function () {
+      var hamburger = document.getElementById('hamburger');
+      var panel = document.getElementById('mobile-panel');
+
+      function openMenu() {
+        hamburger.setAttribute('aria-expanded', 'true');
+        panel.classList.add('open');
+        hamburger.setAttribute('aria-label', 'Close navigation menu');
+      }
+
+      function closeMenu() {
+        hamburger.setAttribute('aria-expanded', 'false');
+        panel.classList.remove('open');
+        hamburger.setAttribute('aria-label', 'Open navigation menu');
+      }
+
+      hamburger.addEventListener('click', function () {
+        var isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // Close on click outside
+      document.addEventListener('click', function (e) {
+        if (
+          hamburger.getAttribute('aria-expanded') === 'true' &&
+          !panel.contains(e.target) &&
+          !hamburger.contains(e.target)
+        ) {
+          closeMenu();
+        }
+      });
+
+      // 5. Close mobile menu when nav link clicked
+      panel.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+    })();
+
+    // 3. FAQ accordion
+    (function () {
+      var items = document.querySelectorAll('.faq__item');
+      items.forEach(function (item) {
+        var btn = item.querySelector('.faq__question');
+        var answer = item.querySelector('.faq__answer');
+
+        btn.addEventListener('click', function () {
+          var isOpen = item.classList.contains('open');
+
+          // Close all
+          items.forEach(function (i) {
+            i.classList.remove('open');
+            i.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+            i.querySelector('.faq__answer').style.maxHeight = null;
+          });
+
+          // Open this one if it was closed
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+    })();
+
+    // 4. IntersectionObserver for fade-in animations
+    (function () {
+      if (!window.IntersectionObserver) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.fade-in').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>

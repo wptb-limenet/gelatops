@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — gelatops</title>
+  <meta name="description" content="The page you were looking for could not be found.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍦</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:      #052445;
+      --blue:      #0189D3;
+      --mid-blue:  #0063A1;
+      --teal:      #00C9D0;
+      --white:     #FFFFFF;
+      --off-white: #F0F7FF;
+      --light-bg:  #E8F4FB;
+      --text-dark: #052445;
+      --text-mid:  #2D5A7E;
+      --text-muted:#6B90AA;
+      --border:    #C8DFEF;
+      --navbar-h:  60px;
+    }
+
+    @media (min-width: 768px) {
+      :root { --navbar-h: 80px; }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--navbar-h);
+      padding-top: env(safe-area-inset-top);
+      background: var(--navy);
+      box-shadow: 0 2px 20px rgba(5,36,69,0.3);
+    }
+
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      padding: 0 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .navbar__brand-icon {
+      display: block;
+      height: 36px;
+      width: auto;
+    }
+
+    .navbar__brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .navbar__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 0 20px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .navbar__cta:hover { background: #0199e8; }
+
+    @media (min-width: 768px) {
+      .navbar__brand-icon { height: 48px; }
+      .navbar__brand-name { font-size: 1.25rem; }
+    }
+
+    /* MAIN 404 CONTENT */
+    .not-found {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      background: var(--off-white);
+      text-align: center;
+    }
+
+    .not-found__inner {
+      max-width: 480px;
+    }
+
+    .not-found__emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 24px;
+      animation: melt 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes melt {
+      0%   { transform: translateY(0) rotate(-3deg); }
+      100% { transform: translateY(6px) rotate(3deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .not-found__emoji { animation: none; }
+    }
+
+    .not-found__code {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 6rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .not-found__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .not-found__desc {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .not-found__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 36px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      transition: filter 0.2s, transform 0.15s;
+    }
+
+    @media (hover: hover) {
+      .not-found__btn:hover {
+        filter: brightness(1.1);
+        transform: translateY(-1px);
+      }
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #021830;
+      padding-top: 40px;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 0 24px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .footer__brand-icon {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .footer__brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+
+    .footer__brand-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    .footer__col-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .footer__link {
+      display: flex;
+      align-items: center;
+      min-height: 34px;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.2s;
+    }
+
+    .footer__link:hover { color: var(--white); }
+
+    .footer__built-text {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    .footer__copyright {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    @media (min-width: 600px) {
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 900px) {
+      .footer__grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__brand" aria-label="gelatops home">
+        <svg class="navbar__brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="100 430 200 390" height="36" aria-hidden="true">
+          <path fill="#052445" d="M228.958 437.561C232.32 437.875 235.292 439.531 236.118 442.905C237.239 447.484 229.766 450.597 226.529 452.471C218.956 456.855 215.067 461.502 210.097 468.426C219.735 476.777 222.669 482.468 222.476 495.102C248.418 509.063 261.525 533.15 255.623 562.592C261.078 565.737 267.028 570.113 271.439 574.58C282.243 585.728 288.181 600.706 287.95 616.227C287.679 635.029 279.947 648.275 266.937 660.982L267.026 670.305C267.1 691.263 260.385 696.968 240.045 697.027C238.499 702.137 236.025 707.708 234.145 712.793C223.004 742.921 211.656 772.972 200.377 803.047C197.929 809.575 193.051 812.88 187.732 806.561C183.068 795.442 179.444 784.014 175.198 772.766C165.624 747.407 156.959 722.053 147.128 696.76C144.544 696.811 141.959 696.822 139.375 696.793C117.961 696.391 119.41 676.158 119.797 660.97C114.116 655.777 109.824 650.77 106.044 644.005C98.5898 630.528 96.7521 614.655 100.93 599.831C105.847 582.539 115.78 571.189 131.156 562.513C125.203 532.311 139.486 507.955 165.85 493.75C167.152 473.336 178.332 463.161 198.715 463.656C205.491 451.63 215.942 442.329 228.958 437.561Z"/>
+          <path fill="#0189D3" d="M164.493 568.149C177.971 570.116 189.699 575.736 198.018 586.785C205.772 596.883 209.169 609.659 207.455 622.274C205.791 633.967 200.5 643.339 191.744 651.162C176.45 651.46 153.23 651.998 138.279 651.291L127.383 651.528C126.201 650.321 125.033 649.1 123.879 647.867C115.057 638.398 110.623 626.666 111.179 613.691C111.815 600.986 117.446 589.046 126.845 580.471C137.468 570.926 150.477 567.398 164.493 568.149Z"/>
+          <path fill="white" d="M127.383 651.528C126.201 650.321 125.033 649.1 123.879 647.867C115.057 638.398 110.623 626.666 111.179 613.691C111.815 600.986 117.446 589.046 126.845 580.471C137.468 570.926 150.477 567.398 164.493 568.149C162.362 569.264 159.873 569.597 157.529 570.149C141.82 573.853 130.234 584.638 124.818 599.958C120.781 611.65 121.503 624.46 126.829 635.624C128.393 638.918 138.172 650.829 138.279 651.291L127.383 651.528Z"/>
+          <path fill="#0063A1" d="M224.796 568.188C226.02 568.123 227.246 568.099 228.471 568.117C241.394 568.281 253.697 573.684 262.56 583.088C271.356 592.17 276.096 604.427 275.698 617.062C275.263 631.44 269.191 641.61 259.058 651.179C254.15 651.368 248.616 651.283 243.657 651.314L208.883 651.291C215.04 640.461 219.689 631.432 220.142 618.488C220.738 601.444 215.512 587.029 203.938 574.603C211.481 570.557 216.331 568.981 224.796 568.188Z"/>
+          <path fill="#00C9D0" d="M169.094 505.746L172.621 511.087C187.096 525.649 206.352 522.476 218.486 506.817C237.719 518.536 247.396 535.052 244.29 558.014C227.387 553.847 208.231 555.905 194.139 566.783C181.571 558.241 168.41 554.291 153.093 556.024C149.71 556.46 145.982 557.359 142.616 558.086C141.618 551.953 141.8 545.686 143.15 539.622C146.772 523.534 155.756 514.211 169.094 505.746Z"/>
+          <path fill="white" d="M169.094 505.746L172.621 511.087C158.03 523.71 152.237 536.512 153.093 556.024C149.71 556.46 145.982 557.359 142.616 558.086C141.618 551.953 141.8 545.686 143.15 539.622C146.772 523.534 155.756 514.211 169.094 505.746Z"/>
+          <path fill="white" d="M132.172 663.605L254.481 663.612C254.577 669.095 255.437 677.476 253.083 682.191C250.824 684.422 249.439 684.821 246.269 684.841C217.083 685.023 187.893 684.895 158.706 684.973C151.139 684.994 143.435 685.211 135.921 684.363C135.543 684.158 134.527 683.42 134.334 683.136C130.872 678.066 132.045 669.682 132.172 663.605Z"/>
+          <path fill="white" d="M193.498 707.048C201.676 712.043 209.7 717.286 217.559 722.769C209.673 728.158 201.711 733.434 193.674 738.596C191.418 737.581 172.901 724.68 169.888 722.628C177.283 717.039 185.633 712.028 193.498 707.048Z"/>
+          <path fill="#0189D3" d="M182.465 503.442C173.024 492.618 182.384 474.239 192.762 476.58C193.951 478.045 193.513 478.366 193.426 480.674C198.529 484.514 200.319 485.407 205.47 480.731C211.514 488.467 212.707 497.59 204.188 504.194C200.566 507.042 195.931 508.275 191.372 507.6C188.055 507.13 184.954 505.682 182.465 503.442Z"/>
+          <path fill="white" d="M182.465 503.442C173.024 492.618 182.384 474.239 192.762 476.58C193.951 478.045 193.513 478.366 193.426 480.674C188.769 487.238 186.998 490.258 189.101 498.343L182.465 503.442Z"/>
+          <path fill="white" d="M193.584 753.018C196.711 754.831 200.637 757.687 203.693 759.779C200.547 768.503 196.874 777.61 193.513 786.3C191.418 783.976 185.035 764.555 183.516 760.154L193.584 753.018Z"/>
+          <path fill="white" d="M201.84 697.147C209.358 696.847 219.08 697.072 226.745 697.052L222.94 707.958C222.306 709.608 222.691 709.356 221.468 710.137C217.091 709.309 205.896 700.234 201.84 697.147Z"/>
+          <path fill="white" d="M160.394 697.038L185.084 696.962C182.723 698.832 179.912 700.788 177.455 702.585C173.383 705.241 169.206 708.187 165.175 710.943C163.699 706.268 162.105 701.632 160.394 697.038Z"/>
+        </svg>
+        <span class="navbar__brand-name">gelatops</span>
+      </a>
+      <a href="mailto:hello@gelatops.com" class="navbar__cta">Get in Touch</a>
+    </div>
+  </header>
+
+  <!-- MAIN 404 CONTENT -->
+  <main class="not-found" id="main-content">
+    <div class="not-found__inner">
+      <span class="not-found__emoji" role="img" aria-label="Melting ice cream">🍦</span>
+      <div class="not-found__code" aria-hidden="true">404</div>
+      <h1 class="not-found__title">Page not found</h1>
+      <p class="not-found__desc">Looks like this scoop melted. The page you were looking for doesn't exist or may have moved.</p>
+      <a href="/" class="not-found__btn">Back to home</a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="footer__grid">
+
+      <!-- Column 1: Branding -->
+      <div>
+        <div class="footer__brand">
+          <svg class="footer__brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="100 430 200 390" height="36" aria-hidden="true">
+            <path fill="#052445" d="M228.958 437.561C232.32 437.875 235.292 439.531 236.118 442.905C237.239 447.484 229.766 450.597 226.529 452.471C218.956 456.855 215.067 461.502 210.097 468.426C219.735 476.777 222.669 482.468 222.476 495.102C248.418 509.063 261.525 533.15 255.623 562.592C261.078 565.737 267.028 570.113 271.439 574.58C282.243 585.728 288.181 600.706 287.95 616.227C287.679 635.029 279.947 648.275 266.937 660.982L267.026 670.305C267.1 691.263 260.385 696.968 240.045 697.027C238.499 702.137 236.025 707.708 234.145 712.793C223.004 742.921 211.656 772.972 200.377 803.047C197.929 809.575 193.051 812.88 187.732 806.561C183.068 795.442 179.444 784.014 175.198 772.766C165.624 747.407 156.959 722.053 147.128 696.76C144.544 696.811 141.959 696.822 139.375 696.793C117.961 696.391 119.41 676.158 119.797 660.97C114.116 655.777 109.824 650.77 106.044 644.005C98.5898 630.528 96.7521 614.655 100.93 599.831C105.847 582.539 115.78 571.189 131.156 562.513C125.203 532.311 139.486 507.955 165.85 493.75C167.152 473.336 178.332 463.161 198.715 463.656C205.491 451.63 215.942 442.329 228.958 437.561Z"/>
+            <path fill="#0189D3" d="M164.493 568.149C177.971 570.116 189.699 575.736 198.018 586.785C205.772 596.883 209.169 609.659 207.455 622.274C205.791 633.967 200.5 643.339 191.744 651.162C176.45 651.46 153.23 651.998 138.279 651.291L127.383 651.528C126.201 650.321 125.033 649.1 123.879 647.867C115.057 638.398 110.623 626.666 111.179 613.691C111.815 600.986 117.446 589.046 126.845 580.471C137.468 570.926 150.477 567.398 164.493 568.149Z"/>
+            <path fill="white" d="M127.383 651.528C126.201 650.321 125.033 649.1 123.879 647.867C115.057 638.398 110.623 626.666 111.179 613.691C111.815 600.986 117.446 589.046 126.845 580.471C137.468 570.926 150.477 567.398 164.493 568.149C162.362 569.264 159.873 569.597 157.529 570.149C141.82 573.853 130.234 584.638 124.818 599.958C120.781 611.65 121.503 624.46 126.829 635.624C128.393 638.918 138.172 650.829 138.279 651.291L127.383 651.528Z"/>
+            <path fill="#0063A1" d="M224.796 568.188C226.02 568.123 227.246 568.099 228.471 568.117C241.394 568.281 253.697 573.684 262.56 583.088C271.356 592.17 276.096 604.427 275.698 617.062C275.263 631.44 269.191 641.61 259.058 651.179C254.15 651.368 248.616 651.283 243.657 651.314L208.883 651.291C215.04 640.461 219.689 631.432 220.142 618.488C220.738 601.444 215.512 587.029 203.938 574.603C211.481 570.557 216.331 568.981 224.796 568.188Z"/>
+            <path fill="#00C9D0" d="M169.094 505.746L172.621 511.087C187.096 525.649 206.352 522.476 218.486 506.817C237.719 518.536 247.396 535.052 244.29 558.014C227.387 553.847 208.231 555.905 194.139 566.783C181.571 558.241 168.41 554.291 153.093 556.024C149.71 556.46 145.982 557.359 142.616 558.086C141.618 551.953 141.8 545.686 143.15 539.622C146.772 523.534 155.756 514.211 169.094 505.746Z"/>
+            <path fill="white" d="M169.094 505.746L172.621 511.087C158.03 523.71 152.237 536.512 153.093 556.024C149.71 556.46 145.982 557.359 142.616 558.086C141.618 551.953 141.8 545.686 143.15 539.622C146.772 523.534 155.756 514.211 169.094 505.746Z"/>
+            <path fill="white" d="M132.172 663.605L254.481 663.612C254.577 669.095 255.437 677.476 253.083 682.191C250.824 684.422 249.439 684.821 246.269 684.841C217.083 685.023 187.893 684.895 158.706 684.973C151.139 684.994 143.435 685.211 135.921 684.363C135.543 684.158 134.527 683.42 134.334 683.136C130.872 678.066 132.045 669.682 132.172 663.605Z"/>
+            <path fill="white" d="M193.498 707.048C201.676 712.043 209.7 717.286 217.559 722.769C209.673 728.158 201.711 733.434 193.674 738.596C191.418 737.581 172.901 724.68 169.888 722.628C177.283 717.039 185.633 712.028 193.498 707.048Z"/>
+            <path fill="#0189D3" d="M182.465 503.442C173.024 492.618 182.384 474.239 192.762 476.58C193.951 478.045 193.513 478.366 193.426 480.674C198.529 484.514 200.319 485.407 205.47 480.731C211.514 488.467 212.707 497.59 204.188 504.194C200.566 507.042 195.931 508.275 191.372 507.6C188.055 507.13 184.954 505.682 182.465 503.442Z"/>
+            <path fill="white" d="M182.465 503.442C173.024 492.618 182.384 474.239 192.762 476.58C193.951 478.045 193.513 478.366 193.426 480.674C188.769 487.238 186.998 490.258 189.101 498.343L182.465 503.442Z"/>
+            <path fill="white" d="M193.584 753.018C196.711 754.831 200.637 757.687 203.693 759.779C200.547 768.503 196.874 777.61 193.513 786.3C191.418 783.976 185.035 764.555 183.516 760.154L193.584 753.018Z"/>
+            <path fill="white" d="M201.84 697.147C209.358 696.847 219.08 697.072 226.745 697.052L222.94 707.958C222.306 709.608 222.691 709.356 221.468 710.137C217.091 709.309 205.896 700.234 201.84 697.147Z"/>
+            <path fill="white" d="M160.394 697.038L185.084 696.962C182.723 698.832 179.912 700.788 177.455 702.585C173.383 705.241 169.206 708.187 165.175 710.943C163.699 706.268 162.105 701.632 160.394 697.038Z"/>
+          </svg>
+          <span class="footer__brand-name">gelatops</span>
+        </div>
+        <p class="footer__brand-desc">The management platform for artisan gelato makers.</p>
+      </div>
+
+      <!-- Column 2: Product -->
+      <div>
+        <h4 class="footer__col-title">Product</h4>
+        <ul class="footer__links" role="list">
+          <li><a href="/#features" class="footer__link">Features</a></li>
+          <li><a href="/#pricing" class="footer__link">Pricing</a></li>
+          <li><a href="/#how-it-works" class="footer__link">How It Works</a></li>
+          <li><a href="/#faq" class="footer__link">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact -->
+      <div>
+        <h4 class="footer__col-title">Contact</h4>
+        <ul class="footer__links" role="list">
+          <li><a href="mailto:hello@gelatops.com" class="footer__link">hello@gelatops.com</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Built with -->
+      <div>
+        <h4 class="footer__col-title">Built with</h4>
+        <p class="footer__built-text">Running on AWS. Analytics by Plausible.</p>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">© 2026 gelatops. Made with 🍦 for gelato makers.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

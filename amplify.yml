@@ -1,0 +1,29 @@
+# gelatops.com — AWS Amplify Static Hosting
+# After deploying, connect the custom domain in:
+# Amplify Console → App → Domain management → Add domain → gelatops.com
+# Amplify will automatically provision an SSL certificate via ACM.
+# Set DNS records at your domain registrar as instructed by Amplify.
+
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "Static site — no build step required"
+  artifacts:
+    baseDirectory: /
+    files:
+      - '**/*'
+  cache:
+    paths: []
+  customHeaders:
+    - pattern: '**/*'
+      headers:
+        - key: 'X-Frame-Options'
+          value: 'DENY'
+        - key: 'X-Content-Type-Options'
+          value: 'nosniff'
+        - key: 'Referrer-Policy'
+          value: 'strict-origin-when-cross-origin'
+        - key: 'Permissions-Policy'
+          value: 'camera=(), microphone=(), geolocation=()'
