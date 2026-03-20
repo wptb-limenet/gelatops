@@ -30,4 +30,4 @@ frontend:
         - key: 'Strict-Transport-Security'
           value: 'max-age=31536000; includeSubDomains; preload'
         - key: 'Content-Security-Policy'
-          value: "default-src 'self'; script-src 'self' https://plausible.io; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io; img-src 'self' https: data:; frame-ancestors 'none';"
+          value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io; img-src 'self' https: data:; frame-ancestors 'none';"
