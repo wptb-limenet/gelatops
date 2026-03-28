@@ -9,9 +9,9 @@ frontend:
   phases:
     build:
       commands:
-        - echo "Static site — no build step required"
+        - node build.js
   artifacts:
-    baseDirectory: /
+    baseDirectory: /dist
     files:
       - '**/*'
   cache:
@@ -31,3 +31,13 @@ frontend:
           value: 'max-age=31536000; includeSubDomains; preload'
         - key: 'Content-Security-Policy'
           value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io; img-src 'self' https: data:; frame-ancestors 'none';"
+  customRules:
+    - source: /it/<*>
+      target: /it/404.html
+      status: '404'
+    - source: /de/<*>
+      target: /de/404.html
+      status: '404'
+    - source: /<*>
+      target: /404.html
+      status: '404'
