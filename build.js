@@ -21,6 +21,7 @@ const STATIC_ASSETS = [
   'og-image.svg',
   'apple-touch-icon.png',
   'robots.txt',
+  'llms.txt',
 ];
 
 // --- Helpers ---
@@ -59,6 +60,48 @@ function buildHreflangTags() {
   return tags.join('\n');
 }
 
+function buildOgLocaleAlternates(currentLocale) {
+  return LOCALES
+    .filter(function (loc) { return loc !== currentLocale; })
+    .map(function (loc) {
+      var ogLoc = LOCALE_DATA[loc].locale || loc;
+      return '  <meta property="og:locale:alternate" content="' + ogLoc + '">';
+    })
+    .join('\n');
+}
+
+function buildFaqJsonLdMainEntity(items) {
+  return JSON.stringify((items || []).map(function (item) {
+    return {
+      '@type': 'Question',
+      'name': item.q,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': item.a
+      }
+    };
+  }));
+}
+
+function buildFaqList(items) {
+  var chevron = '<svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+    '<path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '</svg>';
+  return (items || []).map(function (item) {
+    return '          <article class="faq__item" role="listitem">\n' +
+      '            <button class="faq__question" aria-expanded="false">\n' +
+      '              <span class="faq__question-text">' + item.q + '</span>\n' +
+      '              ' + chevron + '\n' +
+      '            </button>\n' +
+      '            <div class="faq__answer">\n' +
+      '              <div class="faq__answer-inner">\n' +
+      '                ' + item.a + '\n' +
+      '              </div>\n' +
+      '            </div>\n' +
+      '          </article>';
+  }).join('\n\n');
+}
+
 function buildLangSwitcher(currentLocale) {
   var parts = LOCALES.map(function (loc) {
     var label = loc.toUpperCase();
@@ -84,6 +127,9 @@ function replaceTokens(html, translations, locale) {
   tokens['canonical'] = getCanonical(locale);
   tokens['basePath'] = getBasePath(locale);
   tokens['hreflang'] = buildHreflangTags();
+  tokens['ogLocaleAlternates'] = buildOgLocaleAlternates(locale);
+  tokens['faqJsonLdEntities'] = buildFaqJsonLdMainEntity(translations['faq.items']);
+  tokens['faqList'] = buildFaqList(translations['faq.items']);
   tokens['langSwitcher'] = buildLangSwitcher(locale);
   tokens['langDetectScript'] = buildLangDetectScript(locale);
 
@@ -115,6 +161,13 @@ function buildSitemap() {
     urls.join('\n') + '\n</urlset>\n';
 }
 
+// --- Load all locale data once (used by helpers above) ---
+
+var LOCALE_DATA = {};
+LOCALES.forEach(function (loc) {
+  LOCALE_DATA[loc] = loadJSON(path.join(LOCALES_DIR, loc + '.json'));
+});
+
 // --- Main build ---
 
 console.log('Building gelatops...\n');
@@ -130,7 +183,7 @@ var notFoundTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, '404.html'), 'ut
 // Build each locale
 LOCALES.forEach(function (locale) {
   console.log('  Building locale: ' + locale);
-  var translations = loadJSON(path.join(LOCALES_DIR, locale + '.json'));
+  var translations = LOCALE_DATA[locale];
   var outDir = getOutputDir(locale);
   mkdirp(outDir);
 

@@ -17,6 +17,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="gelatops">
   <meta property="og:locale" content="{{locale}}">
+{{ogLocaleAlternates}}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="{{canonical}}">
   <meta name="twitter:title" content="{{meta.twitterTitle}}">
@@ -27,10 +28,19 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍦</text></svg>">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"gelatops","url":"https://gelatops.com","description":"{{jsonld.appDescription}}","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"{{jsonld.offerDescription}}"},"creator":{"@type":"Organization","name":"gelatops","url":"https://gelatops.com","email":"hello@gelatops.com"}}
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"gelatops","url":"https://gelatops.com","description":"{{jsonld.appDescription}}","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":[{"@type":"Offer","name":"{{offer.starter.name}}","description":"{{offer.starter.desc}}"},{"@type":"Offer","name":"{{offer.studio.name}}","description":"{{offer.studio.desc}}"},{"@type":"Offer","name":"{{offer.pro.name}}","description":"{{offer.pro.desc}}"}],"creator":{"@type":"Organization","name":"gelatops","url":"https://gelatops.com","email":"hello@gelatops.com"}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"{{jsonld.faq1q}}","acceptedAnswer":{"@type":"Answer","text":"{{jsonld.faq1a}}"}},{"@type":"Question","name":"{{jsonld.faq2q}}","acceptedAnswer":{"@type":"Answer","text":"{{jsonld.faq2a}}"}},{"@type":"Question","name":"{{jsonld.faq3q}}","acceptedAnswer":{"@type":"Answer","text":"{{jsonld.faq3a}}"}},{"@type":"Question","name":"{{jsonld.faq4q}}","acceptedAnswer":{"@type":"Answer","text":"{{jsonld.faq4a}}"}},{"@type":"Question","name":"{{jsonld.faq5q}}","acceptedAnswer":{"@type":"Answer","text":"{{jsonld.faq5a}}"}},{"@type":"Question","name":"{{jsonld.faq6q}}","acceptedAnswer":{"@type":"Answer","text":"{{jsonld.faq6a}}"}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":{{faqJsonLdEntities}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"{{how.heading}}","step":[{"@type":"HowToStep","position":1,"name":"{{how1.title}}","text":"{{how1.desc}}"},{"@type":"HowToStep","position":2,"name":"{{how2.title}}","text":"{{how2.desc}}"},{"@type":"HowToStep","position":3,"name":"{{how3.title}}","text":"{{how3.desc}}"},{"@type":"HowToStep","position":4,"name":"{{how4.title}}","text":"{{how4.desc}}"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"gelatops","url":"https://gelatops.com","logo":"https://gelatops.com/logo.svg","email":"hello@gelatops.com","sameAs":["https://www.linkedin.com/company/gelatops/","https://www.instagram.com/gelatops.app/"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"gelatops","url":"https://gelatops.com","inLanguage":"{{locale}}"}
   </script>
   {{langDetectScript}}
   <script async src="https://plausible.io/js/pa-PacWb93hgNx9Hs75bm5el.js"></script>
@@ -726,6 +736,43 @@
     @media (min-width: 768px) {
       .pain { padding: 80px 0; }
       .pain__heading { font-size: 2.5rem; }
+    }
+
+    /* =============================================
+       INTRO / WHAT IS GELATOPS
+       ============================================= */
+    .intro {
+      background: var(--white);
+      padding: 48px 24px;
+    }
+
+    .intro__container {
+      max-width: 760px;
+    }
+
+    .intro__heading {
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .intro__lead {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+    }
+
+    .intro__lead:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+      .intro { padding: 72px 24px; }
+      .intro__heading { font-size: 2.25rem; margin-bottom: 24px; }
+      .intro__lead { font-size: 1.125rem; }
     }
 
     /* =============================================
@@ -1576,6 +1623,17 @@
     </section>
 
     <!-- ==========================================
+         WHAT IS GELATOPS?
+         ========================================== -->
+    <section class="intro" aria-labelledby="intro-heading">
+      <div class="container intro__container">
+        <h2 class="intro__heading fade-in" id="intro-heading">{{whatIs.heading}}</h2>
+        <p class="intro__lead fade-in fade-in--delay-1">{{whatIs.intro}}</p>
+        <p class="intro__lead fade-in fade-in--delay-2">{{whatIs.audience}}</p>
+      </div>
+    </section>
+
+    <!-- ==========================================
          PAIN POINTS
          ========================================== -->
     <section class="pain" aria-labelledby="pain-heading">
@@ -1882,89 +1940,7 @@
         <h2 class="faq__heading fade-in" id="faq-heading">{{faq.heading}}</h2>
         <div class="faq__list fade-in fade-in--delay-1" role="list">
 
-          <article class="faq__item" role="listitem">
-            <button class="faq__question" aria-expanded="false">
-              <span class="faq__question-text">{{faq1.q}}</span>
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                {{faq1.a}}
-              </div>
-            </div>
-          </article>
-
-          <article class="faq__item" role="listitem">
-            <button class="faq__question" aria-expanded="false">
-              <span class="faq__question-text">{{faq2.q}}</span>
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                {{faq2.a}}
-              </div>
-            </div>
-          </article>
-
-          <article class="faq__item" role="listitem">
-            <button class="faq__question" aria-expanded="false">
-              <span class="faq__question-text">{{faq3.q}}</span>
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                {{faq3.a}}
-              </div>
-            </div>
-          </article>
-
-          <article class="faq__item" role="listitem">
-            <button class="faq__question" aria-expanded="false">
-              <span class="faq__question-text">{{faq4.q}}</span>
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                {{faq4.a}}
-              </div>
-            </div>
-          </article>
-
-          <article class="faq__item" role="listitem">
-            <button class="faq__question" aria-expanded="false">
-              <span class="faq__question-text">{{faq5.q}}</span>
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                {{faq5.a}}
-              </div>
-            </div>
-          </article>
-
-          <article class="faq__item" role="listitem">
-            <button class="faq__question" aria-expanded="false">
-              <span class="faq__question-text">{{faq6.q}}</span>
-              <svg class="faq__chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                {{faq6.a}}
-              </div>
-            </div>
-          </article>
+{{faqList}}
 
         </div>
       </div>
