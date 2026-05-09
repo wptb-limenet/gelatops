@@ -10,7 +10,7 @@ gelatops is built for artisan gelato makers, gelaterie, small ice-cream producti
 - Production plans freeze ingredient prices at submission, so margins are locked the moment you commit.
 - gelatops integrates with any online shop that can fire a Stripe webhook — including Stripe Checkout, custom Stripe-based shops, and WooCommerce / Shopify when configured to emit webhook events.
 - A free Starter plan is available, and a free trial can be arranged via hello@gelatops.com.
-- Pricing is tiered: Starter (free, up to 10 recipes), Studio (unlimited recipes plus production planning, allergen tracking and stockpile), Pro (multi-shop integration plus supplier auto-ordering and smart recipe balancing). Final prices are tailored to the size of the business.
+- Pricing is tiered: Starter (free, up to 10 recipes), Studio (unlimited recipes plus production planning, allergen tracking and stockpile), Pro (order webhook integration, multi-shop integration, supplier auto-ordering and smart recipe balancing). Final prices are tailored to the size of the business.
 - The recipe system is ingredient-agnostic: gelato, sorbet, vegan, milk-based and fruit-based recipes all use the same tooling.
 - Recipes can include sub-recipes; allergens declared on a sub-recipe automatically propagate to the parent.
 - gelatops runs on AWS with encrypted connections, automated database backups, and private infrastructure.
