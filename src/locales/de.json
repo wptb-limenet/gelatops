@@ -3,25 +3,79 @@
   "locale": "de_DE",
   "meta.title": "gelatops — Software für Eisdiele &amp; Gelato-Management",
   "meta.description": "gelatops ist die All-in-One-Management-Plattform für handwerkliche Gelato- und Eiscreme-Betriebe. Verwalten Sie Rezepte, Produktionsplanung, Lebensmittelkosten, Allergene, Lagerbestand und Online-Bestellungen — alles an einem Ort.",
-  "meta.keywords": "Gelato Management Software, Eisdiele Software, Gelato Rezeptverwaltung, Produktionsplanung Gelato, Lebensmittelkostenrechner Eiscreme, Allergen-Tracking Gelato, Eisdiele Management",
+  "meta.keywords": "Gelato Management Software, Eisdiele Software, Gelato Rezeptverwaltung, Produktionsplanung Gelato, Lebensmittelkostenrechner Eiscreme, Allergen-Tracking Gelato, Eisdiele Management, Software Eisproduktion, EU 1169/2011 Allergen Software",
   "meta.ogTitle": "gelatops — Software für Eisdiele &amp; Gelato-Management",
   "meta.ogDescription": "Die All-in-One-Plattform für handwerkliche Gelato-Hersteller. Rezepte, Produktionsplanung, Lebensmittelkosten, Allergen-Etiketten, Vorratsverwaltung und Bestellintegration — alles an einem Ort.",
   "meta.twitterTitle": "gelatops — Software für Eisdiele &amp; Gelato-Management",
   "meta.twitterDescription": "Die All-in-One-Plattform für handwerkliche Gelato-Hersteller. Rezepte, Produktionsplanung, Lebensmittelkosten, Allergen-Etiketten, Vorratsverwaltung und Bestellintegration.",
   "jsonld.appDescription": "All-in-One-Management-Plattform für handwerkliche Gelato- und Eiscreme-Betriebe. Verwalten Sie Rezepte, Produktionsplanung, Lebensmittelkosten, Allergene, Lagerbestand und Online-Bestellungen.",
-  "jsonld.offerDescription": "Kostenloser Starter-Plan verfügbar. Kontaktieren Sie uns für individuelle Preise.",
-  "jsonld.faq1q": "Brauche ich technische Kenntnisse, um gelatops zu nutzen?",
-  "jsonld.faq1a": "Nein. Die Benutzeroberfläche wurde für Gelato-Hersteller entwickelt, nicht für Entwickler. Wenn Sie mit einer Tabellenkalkulation umgehen können, können Sie auch gelatops nutzen.",
-  "jsonld.faq2q": "Wie funktioniert die Bestellintegration mit meinem Online-Shop?",
-  "jsonld.faq2a": "Ihr Shop sendet einen Webhook an gelatops, sobald ein Kunde bezahlt. Die Bestellung landet automatisch in Ihrer Produktionswarteschlange mit dem passenden Rezept. Wir unterstützen jeden Shop, der einen Stripe-Webhook auslösen kann.",
-  "jsonld.faq3q": "Was passiert, wenn ich einen Produktionsplan einreiche?",
-  "jsonld.faq3a": "gelatops erstellt einen Snapshot aller Positionen und aktuellen Zutatpreise, speichert diesen in Ihrem Verlauf und leert die Warteschlange für neue Bestellungen. Der eingereichte Plan ist schreibgeschützt — Ihre Einkaufsliste ist zeitlich eingefroren.",
-  "jsonld.faq4q": "Wie funktioniert die Allergen-Erfassung?",
-  "jsonld.faq4a": "Ordnen Sie jeder Zutat einmalig ihre EU-Allergene zu — das System deckt alle 14 Pflichtallergene gemäß Verordnung 1169/2011 ab. Jedes Rezept, das diese Zutat verwendet, übernimmt die korrekte Deklaration automatisch, auch Allergene aus Unter-Rezepten. Rezepte ohne Allergene erhalten ein eindeutiges „Enthält keine Allergene“-Badge. Sie können ein konformes Allergenblatt für jedes Rezept direkt aus der App drucken.",
-  "jsonld.faq5q": "Kann ich gelatops auch für Sorbets und vegane Rezepte verwenden?",
-  "jsonld.faq5a": "Ja. gelatops funktioniert für jedes Tiefkühlprodukt — Gelato, Sorbets, vegan, milchbasiert oder fruchtbasiert. Das Rezeptsystem ist zutatenunabhängig.",
-  "jsonld.faq6q": "Sind meine Daten sicher?",
-  "jsonld.faq6a": "Ja. gelatops läuft auf AWS mit verschlüsselten Verbindungen, automatischen Datenbank-Backups und privater Infrastruktur. Ihre Rezepte sind Ihr Wettbewerbsvorteil — wir behandeln sie entsprechend.",
+  "offer.starter.name": "Starter",
+  "offer.starter.desc": "Kostenloser Plan für Solo-Hersteller — bis zu 10 Rezepte, Zutaten- und Kostenerfassung, Einkaufslisten-Export, einzelner Benutzer.",
+  "offer.studio.name": "Studio",
+  "offer.studio.desc": "Unbegrenzte Rezepte, Produktionsplanung, EU-Allergen-Tracking, Vorratsverwaltung, eine Online-Shop-Webhook-Integration, bis zu 5 Benutzer. Endgültige Preise auf Anfrage.",
+  "offer.pro.name": "Pro",
+  "offer.pro.desc": "Alles aus Studio plus Multi-Shop-Integration, intelligente Rezeptbalancierung, automatische Lieferantenbestellungen, Etikettenerstellung, vorrangiger Support, unbegrenzte Benutzer. Endgültige Preise auf Anfrage.",
+  "whatIs.heading": "Was ist gelatops?",
+  "whatIs.intro": "gelatops ist eine All-in-One-Web-Management-Plattform für handwerkliche Gelato- und Eiscreme-Betriebe. Sie zentralisiert Rezepte, Produktionsplanung, Echtzeit-Kostenberechnung, EU-1169/2011-Allergen-Kennzeichnung, Vorratsverwaltung und Online-Bestelleingang in einer einzigen Anwendung — und ersetzt das Flickwerk aus Tabellen, Word-Dokumenten und Telefonaten, auf das sich die meisten Eisdielen verlassen.",
+  "whatIs.audience": "Sie ist für handwerkliche Gelato-Hersteller, Eisdielen, kleine Eisproduktionslabore und Konditoreien gemacht, die gefrorene Desserts herstellen. gelatops passt vom Einzelinhaber-Betrieb bis zur Mehr-Standort-Operation und funktioniert gleich gut für Gelato-, Sorbet-, vegane, milch- oder fruchtbasierte Rezepte.",
+  "faq.items": [
+    {
+      "q": "Was ist gelatops?",
+      "a": "gelatops ist eine All-in-One-Management-Plattform für handwerkliche Gelato- und Eiscreme-Betriebe. Sie zentralisiert Rezepte, Produktionsplanung, Echtzeit-Kostenberechnung, EU-Allergen-Kennzeichnung, Vorratsverwaltung und Online-Bestelleingang in einer einzigen Web-App — und ersetzt das Flickwerk aus Tabellen, Word-Dokumenten und Telefonaten, auf das sich die meisten Eisdielen verlassen. Sie läuft in jedem modernen Browser, ohne Installation."
+    },
+    {
+      "q": "Für wen ist gelatops gedacht?",
+      "a": "gelatops ist für handwerkliche Gelato-Hersteller, Eisdielen, kleine Eisproduktionslabore und Konditoreien gemacht, die gefrorene Desserts herstellen. Es eignet sich für Einzelinhaber-Eisdielen ebenso wie für Mehr-Standort-Betriebe, die Dutzende von Rezepten pro Woche produzieren. Wenn Sie Gelato, Sorbet oder ein anderes gefrorenes Dessert verkaufen, passt gelatops in Ihren Arbeitsablauf."
+    },
+    {
+      "q": "Gibt es eine kostenlose Testphase?",
+      "a": "Ja. Sie können eine kostenlose Testphase von gelatops starten, ohne Zahlungsdaten anzugeben. Die Testphase gibt Ihnen vollen Zugriff auf Rezeptverwaltung, Lebensmittelkostenberechnung, Produktionsplanung und Allergen-Tracking, damit Sie das Produkt mit Ihren echten Rezepten bewerten können, bevor Sie sich verpflichten. Schreiben Sie uns an hello@gelatops.com, um zu starten."
+    },
+    {
+      "q": "Was kostet gelatops?",
+      "a": "Die Preisgestaltung ist gestaffelt. Es gibt einen kostenlosen Starter-Plan für Solo-Hersteller mit bis zu 10 Rezepten, einen Studio-Plan mit unbegrenzten Rezepten, Produktionsplanung, Allergen-Tracking und Vorratsverwaltung, und einen Pro-Plan, der Multi-Shop-Integration, automatische Lieferantenbestellungen und intelligente Rezeptbalancierung hinzufügt. Endgültige Preise werden auf die Größe Ihres Betriebs zugeschnitten — kontaktieren Sie uns für ein Angebot."
+    },
+    {
+      "q": "Brauche ich technische Kenntnisse, um gelatops zu nutzen?",
+      "a": "Nein. Die Benutzeroberfläche wurde für Gelato-Hersteller entwickelt, nicht für Entwickler. Wenn Sie mit einer Tabellenkalkulation umgehen können, können Sie auch gelatops nutzen. Der Einstieg dauert nur Minuten — es muss nichts installiert werden und Ihre Daten sind auf jedem Gerät mit Browser synchronisiert."
+    },
+    {
+      "q": "Kann gelatops meine Rezept-Tabelle ersetzen?",
+      "a": "Ja — das ist der häufigste Grund, warum Eisdielen gelatops einführen. Ihre Rezepte wechseln von verstreuten Tabellen in eine einzige versionierte Datenbank mit Zutatenmengen pro Liter, automatischer Kostenneuberechnung bei Preisänderungen und vererbten Allergen-Deklarationen. Sie können Ihre bestehenden Rezepte manuell oder mit unserer Hilfe beim Onboarding importieren."
+    },
+    {
+      "q": "Wie funktioniert die Lebensmittelkostenberechnung in gelatops?",
+      "a": "Jedes Rezept zeigt Live-Kosten für 1 L, 5 L, 10 L und 15 L basierend auf den aktuellen Zutatpreisen. Aktualisieren Sie einen Zutatpreis an einer Stelle und jedes Rezept, das ihn verwendet, wird automatisch neu berechnet. Wenn Sie einen Produktionsplan einreichen, werden die Preise in einem Snapshot eingefroren, sodass Ihre Einkaufsliste und Ihre Marge zum Einreichungszeitpunkt fixiert bleiben — auch wenn sich die Preise später ändern."
+    },
+    {
+      "q": "Wie funktioniert die Bestellintegration mit meinem Online-Shop?",
+      "a": "Ihr Shop sendet einen Webhook an gelatops, sobald ein Kunde bezahlt. Die Bestellung landet automatisch in Ihrer Produktionswarteschlange mit dem passenden Rezept, sodass keine doppelte Eingabe nötig ist. Wir unterstützen jeden Shop, der einen Stripe-Webhook auslösen kann — einschließlich Stripe Checkout, individuell aufgesetzte Stripe-Shops und die meisten Plattformen, die Webhook-Events bereitstellen."
+    },
+    {
+      "q": "Lässt sich gelatops mit WooCommerce, Shopify oder einem eigenen Shop verbinden?",
+      "a": "Wenn Ihr Shop einen Stripe-Webhook auslösen kann, lässt sich gelatops damit verbinden. WooCommerce und Shopify unterstützen beide Webhook-Ausgaben, die wir konsumieren können, und jeder eigene Shop, der Stripe Checkout oder Stripe Elements verwendet, funktioniert sofort. Für Setups ohne Stripe melden Sie sich gerne — wir prüfen, ob ein individueller Adapter machbar ist."
+    },
+    {
+      "q": "Was passiert, wenn ich einen Produktionsplan einreiche?",
+      "a": "gelatops erstellt einen Snapshot aller Positionen und aktuellen Zutatpreise, speichert diesen in Ihrem Verlauf und leert die Warteschlange für neue Bestellungen. Der eingereichte Plan ist schreibgeschützt — Ihre Einkaufsliste und der Gesamtbetrag sind zum Einreichungszeitpunkt fixiert. Aus dem eingefrorenen Plan können Sie drucken, als CSV exportieren oder die Bestellung direkt an einen verbundenen Lieferanten senden."
+    },
+    {
+      "q": "Ist gelatops konform mit der EU-Verordnung 1169/2011?",
+      "a": "gelatops deckt alle 14 Pflichtallergene gemäß der EU-Verordnung 1169/2011 ab und ist so aufgebaut, dass die rechtlich vorgeschriebene Allergen-Auslobung auf jedem Rezept automatisch erfolgt. Markieren Sie jede Zutat einmalig mit ihren Allergenen, und jedes Rezept übernimmt die korrekte Deklaration — auch Allergene aus Unter-Rezepten. Konformität hängt letztlich von den Daten ab, die Sie eingeben, doch das System ist so gestaltet, dass übersehene Deklarationen strukturell schwer werden."
+    },
+    {
+      "q": "Verarbeitet gelatops Unter-Rezepte und vererbte Allergene?",
+      "a": "Ja. Ein Rezept kann andere Rezepte als Zutaten enthalten (Unter-Rezepte), und alle in einem Unter-Rezept deklarierten Allergene werden automatisch an das Hauptrezept weitergegeben. Wenn Sie ein Unter-Rezept ändern — etwa Pistazien zu Ihrer Pralinenbasis hinzufügen — spiegelt jedes Hauptrezept sofort die neue Allergenliste wider. Rezepte ohne Allergene erhalten ein eindeutiges „Enthält keine Allergene“-Badge."
+    },
+    {
+      "q": "Kann ich gelatops auch für Sorbets und vegane Rezepte verwenden?",
+      "a": "Ja. gelatops funktioniert für jedes Tiefkühlprodukt — Gelato, Sorbets, vegan, milchbasiert, fruchtbasiert und Kombinationen. Das Rezeptsystem ist zutatenunabhängig, sodass ein veganes Sorbet, ein Milchgelato oder ein Fior di Latte alle dieselben Werkzeuge verwenden. Die intelligente Rezeptbalancierung unterstützt sowohl Gelato- als auch Sorbet-Texturprofile."
+    },
+    {
+      "q": "Sind meine Daten sicher?",
+      "a": "Ja. gelatops läuft auf AWS mit verschlüsselten Verbindungen, automatischen Datenbank-Backups und privater Infrastruktur. Ihre Rezepte sind Ihr Wettbewerbsvorteil — wir behandeln sie entsprechend. Wir geben Rezeptdaten niemals an Dritte weiter, und Sie können jederzeit einen vollständigen Datenexport anfordern."
+    }
+  ],
   "nav.features": "Funktionen",
   "nav.howItWorks": "So funktioniert's",
   "nav.pricing": "Preise",
@@ -123,18 +177,6 @@
   "pricing.pro.f6": "Vorrangiger Support",
   "pricing.pro.f7": "Unbegrenzte Benutzer",
   "faq.heading": "Häufig gestellte Fragen",
-  "faq1.q": "Brauche ich technische Kenntnisse, um gelatops zu nutzen?",
-  "faq1.a": "Nein. Die Benutzeroberfläche wurde für Gelato-Hersteller entwickelt, nicht für Entwickler. Wenn Sie mit einer Tabellenkalkulation umgehen können, können Sie auch gelatops nutzen.",
-  "faq2.q": "Wie funktioniert die Bestellintegration mit meinem Online-Shop?",
-  "faq2.a": "Ihr Shop sendet einen Webhook an gelatops, sobald ein Kunde bezahlt. Die Bestellung landet automatisch in Ihrer Produktionswarteschlange mit dem passenden Rezept. Wir unterstützen jeden Shop, der einen Stripe-Webhook auslösen kann.",
-  "faq3.q": "Was passiert, wenn ich einen Produktionsplan einreiche?",
-  "faq3.a": "gelatops erstellt einen Snapshot aller Positionen und aktuellen Zutatpreise, speichert diesen in Ihrem Verlauf und leert die Warteschlange für neue Bestellungen. Der eingereichte Plan ist schreibgeschützt — Ihre Einkaufsliste ist zeitlich eingefroren.",
-  "faq4.q": "Wie funktioniert die Allergen-Erfassung?",
-  "faq4.a": "Ordnen Sie jeder Zutat einmalig ihre EU-Allergene zu — das System deckt alle 14 Pflichtallergene gemäß Verordnung 1169/2011 ab. Jedes Rezept, das diese Zutat verwendet, übernimmt die korrekte Deklaration automatisch, auch Allergene aus Unter-Rezepten. Rezepte ohne Allergene erhalten ein eindeutiges „Enthält keine Allergene“-Badge. Sie können ein konformes Allergenblatt für jedes Rezept direkt aus der App drucken.",
-  "faq5.q": "Kann ich gelatops auch für Sorbets und vegane Rezepte verwenden?",
-  "faq5.a": "Ja. gelatops funktioniert für jedes Tiefkühlprodukt — Gelato, Sorbets, vegan, milchbasiert oder fruchtbasiert. Das Rezeptsystem ist zutatenunabhängig.",
-  "faq6.q": "Sind meine Daten sicher?",
-  "faq6.a": "Ja. gelatops läuft auf AWS mit verschlüsselten Verbindungen, automatischen Datenbank-Backups und privater Infrastruktur. Ihre Rezepte sind Ihr Wettbewerbsvorteil — wir behandeln sie entsprechend.",
   "cta.heading": "Bereit, Ihre Eisdiele besser zu führen?",
   "cta.lead": "Nehmen Sie Kontakt auf und wir richten Sie ein.",
   "cta.button": "Schreiben Sie uns an hello@gelatops.com",
