@@ -10,7 +10,7 @@
   "meta.twitterDescription": "The all-in-one platform for artisan gelato makers. Recipes, costs and margins, production planning, allergen tracking, stockpile and sales analytics.",
   "jsonld.appDescription": "All-in-one management platform for artisan gelato and ice cream businesses. Manage recipes, food costs and margins, production planning, allergens, stock tracking, online orders and sales analytics.",
   "offer.starter.name": "Starter",
-  "offer.starter.desc": "Free plan with every feature — up to 10 production runs a month, unlimited recipes, food cost and margins, allergen tracking, stockpile and sales analytics. Single user.",
+  "offer.starter.desc": "Free for your first 10 production runs, with every feature and no payment details — then pay-as-you-go. Unlimited recipes, food cost and margins, allergen tracking, stockpile and sales analytics. Single user.",
   "offer.studio.name": "Studio",
   "offer.studio.desc": "€49/mo. Everything in Starter plus unlimited production runs, team accounts and roles, up to 5 users, and priority email support.",
   "offer.pro.name": "Pro",
@@ -26,11 +26,15 @@
     },
     {
       "q": "Is there a free plan?",
-      "a": "Yes. The Starter plan is free with every feature, capped at 10 production runs a month, and needs no payment details. Create your account at app.gelatops.com and evaluate gelatops against your real recipes — or email hello@gelatops.com if you'd like a hand getting set up."
+      "a": "Yes. Your first 10 production runs are free, with every feature and no payment details. After that gelatops is pay-as-you-go — you move to a paid plan but are only billed for the months you actually use it. Create your account at app.gelatops.com, or email hello@gelatops.com if you’d like a hand getting set up."
     },
     {
       "q": "How much does gelatops cost?",
-      "a": "Pricing is simple. The Starter plan is free with every feature, capped at 10 production runs a month. Studio is €49/mo and adds unlimited production runs, team accounts and more users. Pro is €149/mo and adds order webhook integration, multiple shop integrations and priority support. You can start free at app.gelatops.com — no payment details required."
+      "a": "Pricing is simple and pay-as-you-go. Your first 10 production runs are free. After that, Studio is €49/mo and Pro is €149/mo — but you’re only billed for the months you actually use gelatops (no usage in a 30-day period means no charge). Start free at app.gelatops.com, no payment details required."
+    },
+    {
+      "q": "Can I get a demo of gelatops?",
+      "a": "Yes. We’ll walk you through gelatops live and answer your questions — in English, Swedish, French, German or Spanish. Email hello@gelatops.com and we’ll book a session at a time that suits you."
     },
     {
       "q": "Do I need technical knowledge to use gelatops?",
@@ -105,11 +109,9 @@
   "mockup.revenue": "Revenue",
   "mockup.prodCost": "Production cost",
   "mockup.grossProfit": "Gross profit",
-  "mockup.priceAnalysis": "Price Analysis",
+  "mockup.marginTitle": "Gross margin · target 60%",
   "mockup.retailPricing": "Retail pricing",
   "mockup.scoop": "Scoop",
-  "mockup.tierIdeal": "Ideal",
-  "mockup.tierPremium": "Premium",
   "hero.scroll": "Scroll",
   "pain.heading": "Sound familiar?",
   "pain.subheading": "Managing a gelateria without the right tools means...",
@@ -130,7 +132,7 @@
   "feature1.title": "Recipe Management",
   "feature1.desc": "Build and manage all your ice cream and sorbet recipes. Set ingredient amounts per litre, track which recipes use which ingredients, and keep everything versioned and organised.",
   "feature2.title": "Real-Time Food Cost",
-  "feature2.desc": "See the cost of every recipe at 1L, 5L, 10L and 15L instantly. Update ingredient prices once and every recipe recalculates automatically. Know your margins before you produce.",
+  "feature2.desc": "See the cost of every recipe at the batch sizes you actually work in — set your own, or use 1L, 5L, 10L and 15L — recalculated instantly. Update an ingredient price once and every recipe updates automatically. Know your margins before you produce.",
   "feature3.title": "Production Planning",
   "feature3.desc": "Build production plans manually or let incoming orders populate them automatically. Submit a plan and get a frozen shopping list with prices locked at that moment in time.",
   "feature4.title": "Smart Shopping Lists",
@@ -161,14 +163,14 @@
   "how4.title": "Submit and order",
   "how4.desc": "Submit the plan. Get a frozen shopping list with quantities and prices locked. Print it, export it to CSV, tick items off as you buy. Make gelato.",
   "pricing.heading": "Simple, honest pricing",
-  "pricing.subheading": "Start free with every feature. Upgrade only when you outgrow it.",
+  "pricing.subheading": "Start free with every feature. After your first 10 production runs it’s pay-as-you-go — billed only for the months you use gelatops.",
   "pricing.ctaFree": "Start free",
   "pricing.ctaStart": "Get started",
   "pricing.starter.badge": "Free · all features",
   "pricing.starter.name": "Starter",
   "pricing.starter.amount": "Free",
   "pricing.starter.f1": "All features included",
-  "pricing.starter.f2": "Up to 10 production runs / month",
+  "pricing.starter.f2": "Up to 10 production runs",
   "pricing.starter.f3": "Unlimited recipes &amp; ingredients",
   "pricing.starter.f4": "Food cost, margins &amp; price analysis",
   "pricing.starter.f5": "Allergen tracking &amp; sheets",
@@ -196,7 +198,7 @@
   "pricing.pro.f8": "Supplier integration &amp; auto-ordering <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(coming soon)</em>",
   "faq.heading": "Frequently asked questions",
   "cta.heading": "Ready to run a better gelateria?",
-  "cta.lead": "Create your free account in minutes — or get in touch and we'll help you get set up.",
+  "cta.lead": "Create your free account in minutes — or book a demo in English, Swedish, French, German or Spanish at hello@gelatops.com.",
   "cta.button": "Email us at hello@gelatops.com",
   "cta.note": "We reply within 24 hours.",
   "footer.brandDesc": "The management platform for artisan gelato makers.",
