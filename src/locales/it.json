@@ -3,25 +3,76 @@
   "locale": "it_IT",
   "meta.title": "gelatops — Software gestionale per gelaterie &amp; attività di gelato artigianale",
   "meta.description": "gelatops è la piattaforma gestionale all-in-one per gelaterie artigianali e attività di gelato. Gestisci ricette, costi alimentari e margini, pianificazione della produzione, allergeni, gestione scorte, ordini online e analisi delle vendite — tutto in un unico posto.",
-  "meta.keywords": "software gestionale gelateria, software gelateria artigianale, gestione ricette gelato, pianificazione produzione gelato, calcolo costi gelato, margini di profitto gelato, tracciamento allergeni gelato, analisi vendite gelato, gestione gelateria",
+  "meta.keywords": "software gestionale gelateria, software gelateria artigianale, gestione ricette gelato, pianificazione produzione gelato, calcolo costi gelato, margini di profitto gelato, tracciamento allergeni gelato, analisi vendite gelato, gestione gelateria, software per laboratorio gelato, conformità Regolamento 1169/2011 gelato",
   "meta.ogTitle": "gelatops — Software gestionale per gelaterie &amp; attività di gelato artigianale",
   "meta.ogDescription": "La piattaforma all-in-one per i gelatieri artigianali. Ricette, costi alimentari e margini, pianificazione della produzione, tracciamento allergeni, gestione scorte e analisi delle vendite — tutto in un unico posto.",
   "meta.twitterTitle": "gelatops — Software gestionale per gelaterie &amp; attività di gelato artigianale",
   "meta.twitterDescription": "La piattaforma all-in-one per i gelatieri artigianali. Ricette, costi e margini, pianificazione della produzione, tracciamento allergeni, gestione scorte e analisi delle vendite.",
   "jsonld.appDescription": "Piattaforma gestionale all-in-one per gelaterie artigianali e attività di gelato. Gestisci ricette, costi alimentari e margini, pianificazione della produzione, allergeni, gestione scorte, ordini online e analisi delle vendite.",
-  "jsonld.offerDescription": "Piano gratuito con tutte le funzionalità, limitato a 10 cicli di produzione al mese. Piani a pagamento da €49/mese.",
-  "jsonld.faq1q": "Servono competenze tecniche per usare gelatops?",
-  "jsonld.faq1a": "No. L'interfaccia è pensata per i gelatieri, non per gli sviluppatori. Se sai usare un foglio di calcolo, sai usare gelatops.",
-  "jsonld.faq2q": "Come funziona l'integrazione degli ordini con il mio negozio online?",
-  "jsonld.faq2a": "Il tuo negozio invia un webhook a gelatops quando un cliente effettua il pagamento. L'ordine arriva automaticamente nella coda di produzione con la ricetta già associata. Supportiamo qualsiasi negozio in grado di inviare un webhook Stripe.",
-  "jsonld.faq3q": "Cosa succede quando invio un piano di produzione?",
-  "jsonld.faq3a": "gelatops acquisisce un'istantanea di tutti gli articoli e dei prezzi correnti degli ingredienti, la salva nello storico e svuota la coda per i nuovi ordini. Il piano inviato è in sola lettura — la lista della spesa è cristallizzata nel tempo.",
-  "jsonld.faq4q": "Come funziona il tracciamento degli allergeni?",
-  "jsonld.faq4a": "Associa a ciascun ingrediente i suoi allergeni UE una sola volta — il sistema copre tutte e 14 le categorie obbligatorie ai sensi del Regolamento 1169/2011. Ogni ricetta che utilizza quell'ingrediente eredita automaticamente la dichiarazione corretta, inclusi gli allergeni provenienti da sotto-ricette. Le ricette senza allergeni ricevono un badge esplicito 'non contiene allergeni'. Puoi stampare una scheda allergeni conforme per qualsiasi ricetta direttamente dall'app.",
-  "jsonld.faq5q": "Posso usare gelatops per sorbetti e ricette vegane?",
-  "jsonld.faq5a": "Sì. gelatops funziona per qualsiasi prodotto gelato — gelato, sorbetti, vegano, a base latte o a base frutta. Il sistema di ricette è indipendente dagli ingredienti.",
-  "jsonld.faq6q": "I miei dati sono al sicuro?",
-  "jsonld.faq6a": "Sì. gelatops gira su AWS con connessioni crittografate, backup automatici del database e infrastruttura privata. Le tue ricette sono il tuo vantaggio competitivo — le trattiamo di conseguenza.",
+  "offer.starter.name": "Starter",
+  "offer.starter.desc": "Piano gratuito con tutte le funzionalità — fino a 10 cicli di produzione al mese, ricette illimitate, costi e margini, tracciamento allergeni, gestione scorte e analisi delle vendite. Utente singolo.",
+  "offer.studio.name": "Studio",
+  "offer.studio.desc": "€49/mese. Tutto incluso in Starter più cicli di produzione illimitati, account team e ruoli, fino a 5 utenti e supporto prioritario via email.",
+  "offer.pro.name": "Pro",
+  "offer.pro.desc": "€149/mese. Tutto incluso in Studio più integrazione ordini via webhook, integrazioni con più negozi, utenti illimitati e supporto prioritario. Generazione etichette, bilanciamento intelligente delle ricette e ordini automatici ai fornitori sono in arrivo.",
+  "faq.items": [
+    {
+      "q": "Cos'è gelatops?",
+      "a": "gelatops è una piattaforma gestionale all-in-one per gelaterie artigianali e attività di gelato. Centralizza ricette, pianificazione della produzione, calcolo dei costi in tempo reale, etichettatura allergeni UE, gestione scorte e ricezione di ordini online in un'unica applicazione web — sostituendo il patchwork di fogli di calcolo, documenti Word e telefonate su cui si basano la maggior parte delle gelaterie. Funziona in qualsiasi browser moderno, senza installazione."
+    },
+    {
+      "q": "A chi è destinato gelatops?",
+      "a": "gelatops è pensato per gelatieri artigianali, gelaterie, piccoli laboratori di produzione di gelato e cucine pasticcere che producono dessert congelati. È adatto sia alle gelaterie a singolo titolare sia alle attività multi-negozio che producono decine di ricette a settimana. Se vendi gelato, sorbetto o qualsiasi dessert congelato, gelatops si adatta al tuo flusso di lavoro."
+    },
+    {
+      "q": "C’è un piano gratuito?",
+      "a": "Sì. Il piano Starter è gratuito con tutte le funzionalità, limitato a 10 cicli di produzione al mese, e non richiede dati di pagamento. Crea il tuo account su app.gelatops.com e prova gelatops sulle tue ricette reali — oppure scrivici a hello@gelatops.com se vuoi una mano per iniziare."
+    },
+    {
+      "q": "Quanto costa gelatops?",
+      "a": "I prezzi sono semplici. Il piano Starter è gratuito con tutte le funzionalità, limitato a 10 cicli di produzione al mese. Studio costa €49/mese e aggiunge cicli di produzione illimitati, account team e più utenti. Pro costa €149/mese e aggiunge integrazione ordini via webhook, integrazioni con più negozi e supporto prioritario. Puoi iniziare gratis su app.gelatops.com — senza dati di pagamento."
+    },
+    {
+      "q": "Servono competenze tecniche per usare gelatops?",
+      "a": "No. L'interfaccia è pensata per i gelatieri, non per gli sviluppatori. Se sai usare un foglio di calcolo, sai usare gelatops. L'avvio richiede pochi minuti — non c'è nulla da installare e i tuoi dati si sincronizzano su qualsiasi dispositivo con un browser."
+    },
+    {
+      "q": "gelatops può sostituire il mio foglio di calcolo delle ricette?",
+      "a": "Sì — è il motivo più comune per cui le gelaterie adottano gelatops. Le tue ricette passano da fogli di calcolo sparsi a un'unica base dati versionata con quantità di ingredienti per litro, ricalcolo automatico dei costi quando i prezzi cambiano e dichiarazioni allergeni ereditate. Puoi importare le tue ricette esistenti manualmente o con il nostro aiuto durante l'onboarding."
+    },
+    {
+      "q": "Come funziona il calcolo dei costi alimentari in gelatops?",
+      "a": "Ogni ricetta mostra il costo aggiornato a 1 L, 5 L, 10 L e 15 L in base ai prezzi correnti degli ingredienti. Aggiorna il prezzo di un ingrediente in un punto e ogni ricetta che lo usa si ricalcola automaticamente. Quando invii un piano di produzione, i prezzi vengono congelati in un'istantanea, così la lista della spesa e il margine restano bloccati al momento dell'invio, anche se i prezzi cambiano in seguito."
+    },
+    {
+      "q": "Come funziona l'integrazione degli ordini con il mio negozio online?",
+      "a": "Il tuo negozio invia un webhook a gelatops quando un cliente effettua il pagamento. L'ordine arriva automaticamente nella coda di produzione con la ricetta già associata, eliminando la doppia immissione. Supportiamo qualsiasi negozio in grado di inviare un webhook Stripe — incluso Stripe Checkout, negozi personalizzati basati su Stripe e la maggior parte delle piattaforme che espongono eventi webhook."
+    },
+    {
+      "q": "gelatops si integra con WooCommerce, Shopify o un negozio personalizzato?",
+      "a": "Se il tuo negozio può inviare un webhook Stripe, gelatops si integra con esso. Sia WooCommerce che Shopify supportano output webhook che possiamo consumare, e qualsiasi negozio personalizzato che usa Stripe Checkout o Stripe Elements funziona subito. Per configurazioni non basate su Stripe, contattaci e valuteremo se è possibile un adattatore personalizzato."
+    },
+    {
+      "q": "Cosa succede quando invio un piano di produzione?",
+      "a": "gelatops acquisisce un’istantanea di tutti gli articoli e dei prezzi correnti degli ingredienti, la salva nello storico e svuota la coda per i nuovi ordini. Il piano inviato è in sola lettura — la lista della spesa e il costo totale sono cristallizzati nel tempo. Dal piano congelato puoi stamparlo, esportarlo in CSV o spuntare gli articoli mentre acquisti."
+    },
+    {
+      "q": "gelatops è conforme al Regolamento UE 1169/2011?",
+      "a": "gelatops copre tutte e 14 le categorie di allergeni obbligatorie ai sensi del Regolamento UE 1169/2011 ed è progettato in modo che la dichiarazione legale degli allergeni su ogni ricetta sia automatica. Associa una sola volta gli allergeni a ciascun ingrediente e ogni ricetta erediterà la dichiarazione corretta, inclusi gli allergeni provenienti da sotto-ricette. La conformità dipende in ultima analisi dai dati che inserisci, ma il sistema è progettato per rendere strutturalmente difficili le dichiarazioni mancate."
+    },
+    {
+      "q": "gelatops gestisce le sotto-ricette e gli allergeni ereditati?",
+      "a": "Sì. Una ricetta può includere altre ricette come ingredienti (sotto-ricette), e qualsiasi allergene dichiarato in una sotto-ricetta si propaga automaticamente alla ricetta principale. Se modifichi una sotto-ricetta — aggiungendo pistacchio alla tua base di pralina, per esempio — ogni ricetta principale riflette immediatamente il nuovo elenco di allergeni. Le ricette senza allergeni ricevono un badge esplicito 'non contiene allergeni'."
+    },
+    {
+      "q": "Posso usare gelatops per sorbetti e ricette vegane?",
+      "a": "Sì. gelatops funziona per qualsiasi prodotto congelato — gelato, sorbetti, vegano, a base latte, a base frutta e combinazioni. Il sistema di ricette è indipendente dagli ingredienti, quindi un sorbetto vegano, un gelato a base latte o un fior di latte usano tutti gli stessi strumenti."
+    },
+    {
+      "q": "I miei dati sono al sicuro?",
+      "a": "Sì. gelatops gira su AWS con connessioni crittografate, backup automatici del database e infrastruttura privata. Le tue ricette sono il tuo vantaggio competitivo — le trattiamo di conseguenza. Non condividiamo mai i dati delle ricette con terze parti e puoi richiedere un'esportazione completa dei tuoi dati in qualsiasi momento."
+    }
+  ],
   "nav.features": "Funzionalità",
   "nav.howItWorks": "Come funziona",
   "nav.pricing": "Prezzi",
@@ -129,33 +180,21 @@
   "pricing.studio.period": "/mese",
   "pricing.studio.f1": "Tutto incluso in Starter",
   "pricing.studio.f2": "Cicli di produzione illimitati",
-  "pricing.studio.f3": "Integrazione ordini via webhook (1 negozio)",
-  "pricing.studio.f4": "Account team &amp; ruoli",
-  "pricing.studio.f5": "Fino a 5 utenti",
-  "pricing.studio.f6": "Supporto prioritario via email",
+  "pricing.studio.f3": "Account team &amp; ruoli",
+  "pricing.studio.f4": "Fino a 5 utenti",
+  "pricing.studio.f5": "Supporto prioritario via email",
   "pricing.pro.name": "Pro",
   "pricing.pro.amount": "€149",
   "pricing.pro.period": "/mese",
   "pricing.pro.f1": "Tutto incluso in Studio",
-  "pricing.pro.f2": "Integrazioni con più negozi",
-  "pricing.pro.f3": "Utenti illimitati",
-  "pricing.pro.f4": "Supporto prioritario",
-  "pricing.pro.f5": "Generazione etichette <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(in arrivo)</em>",
-  "pricing.pro.f6": "Bilanciamento intelligente ricette <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(in arrivo)</em>",
-  "pricing.pro.f7": "Integrazione fornitori &amp; ordini automatici <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(in arrivo)</em>",
+  "pricing.pro.f2": "Integrazione ordini via webhook",
+  "pricing.pro.f3": "Integrazioni con più negozi",
+  "pricing.pro.f4": "Utenti illimitati",
+  "pricing.pro.f5": "Supporto prioritario",
+  "pricing.pro.f6": "Generazione etichette <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(in arrivo)</em>",
+  "pricing.pro.f7": "Bilanciamento intelligente ricette <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(in arrivo)</em>",
+  "pricing.pro.f8": "Integrazione fornitori &amp; ordini automatici <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(in arrivo)</em>",
   "faq.heading": "Domande frequenti",
-  "faq1.q": "Servono competenze tecniche per usare gelatops?",
-  "faq1.a": "No. L'interfaccia è pensata per i gelatieri, non per gli sviluppatori. Se sai usare un foglio di calcolo, sai usare gelatops.",
-  "faq2.q": "Come funziona l'integrazione degli ordini con il mio negozio online?",
-  "faq2.a": "Il tuo negozio invia un webhook a gelatops quando un cliente effettua il pagamento. L'ordine arriva automaticamente nella coda di produzione con la ricetta già associata. Supportiamo qualsiasi negozio in grado di inviare un webhook Stripe.",
-  "faq3.q": "Cosa succede quando invio un piano di produzione?",
-  "faq3.a": "gelatops acquisisce un'istantanea di tutti gli articoli e dei prezzi correnti degli ingredienti, la salva nello storico e svuota la coda per i nuovi ordini. Il piano inviato è in sola lettura — la lista della spesa è cristallizzata nel tempo.",
-  "faq4.q": "Come funziona il tracciamento degli allergeni?",
-  "faq4.a": "Associa a ciascun ingrediente i suoi allergeni UE una sola volta — il sistema copre tutte e 14 le categorie obbligatorie ai sensi del Regolamento 1169/2011. Ogni ricetta che utilizza quell'ingrediente eredita automaticamente la dichiarazione corretta, inclusi gli allergeni provenienti da sotto-ricette. Le ricette senza allergeni ricevono un badge esplicito 'non contiene allergeni'. Puoi stampare una scheda allergeni conforme per qualsiasi ricetta direttamente dall'app.",
-  "faq5.q": "Posso usare gelatops per sorbetti e ricette vegane?",
-  "faq5.a": "Sì. gelatops funziona per qualsiasi prodotto gelato — gelato, sorbetti, vegano, a base latte o a base frutta. Il sistema di ricette è indipendente dagli ingredienti.",
-  "faq6.q": "I miei dati sono al sicuro?",
-  "faq6.a": "Sì. gelatops gira su AWS con connessioni crittografate, backup automatici del database e infrastruttura privata. Le tue ricette sono il tuo vantaggio competitivo — le trattiamo di conseguenza.",
   "cta.heading": "Pronto a gestire meglio la tua gelateria?",
   "cta.lead": "Crea il tuo account gratuito in pochi minuti — o contattaci e ti aiuteremo a iniziare.",
   "cta.button": "Scrivici a hello@gelatops.com",

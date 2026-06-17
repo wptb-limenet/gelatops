@@ -1,0 +1,37 @@
+# gelatops
+
+> All-in-one management platform for artisan gelato and ice cream businesses — recipes, production planning, food costs, EU allergen labelling, stockpile tracking and online-order intake in one web app.
+
+gelatops is built for artisan gelato makers, gelaterie, small ice-cream production labs and pastry kitchens. It centralises recipe management, real-time food costing at 1 L / 5 L / 10 L / 15 L, EU 1169/2011 allergen tracking with sub-recipe inheritance, production planning with frozen-snapshot shopping lists, supplier auto-ordering, and Stripe-webhook online-order intake. The product replaces the spreadsheets, Word documents, and phone calls that most gelaterias currently rely on.
+
+## Key facts
+
+- gelatops covers all 14 mandatory allergen categories under EU Regulation 1169/2011.
+- Production plans freeze ingredient prices at submission, so margins are locked the moment you commit.
+- gelatops integrates with any online shop that can fire a Stripe webhook — including Stripe Checkout, custom Stripe-based shops, and WooCommerce / Shopify when configured to emit webhook events.
+- A free Starter plan is available, and a free trial can be arranged via hello@gelatops.com.
+- Pricing is tiered: Starter (free, up to 10 recipes), Studio (unlimited recipes plus production planning, allergen tracking and stockpile), Pro (order webhook integration, multi-shop integration, supplier auto-ordering and smart recipe balancing). Final prices are tailored to the size of the business.
+- The recipe system is ingredient-agnostic: gelato, sorbet, vegan, milk-based and fruit-based recipes all use the same tooling.
+- Recipes can include sub-recipes; allergens declared on a sub-recipe automatically propagate to the parent.
+- gelatops runs on AWS with encrypted connections, automated database backups, and private infrastructure.
+- The product is web-only and runs in any modern browser; there is nothing to install.
+- The interface is available in English, Italian and German.
+
+## How it works (4 steps)
+
+1. Set up your recipes — add gelato and sorbet recipes with per-litre ingredient amounts and ingredient prices.
+2. Add what you need to produce — items enter the production queue manually, or land automatically via Stripe webhook from your online shop.
+3. Build your production plan — assign queue items to dated production runs, adjust quantities, review the cost summary.
+4. Submit and order — get a frozen shopping list with quantities and prices locked; print, export, or auto-send to a connected supplier.
+
+## Pages
+
+- [Home (English)](https://gelatops.com/): Product overview, features, pricing, FAQ.
+- [Home (Italian)](https://gelatops.com/it/): Sito in italiano.
+- [Home (German)](https://gelatops.com/de/): Webseite auf Deutsch.
+
+## Contact
+
+- Email: hello@gelatops.com
+- LinkedIn: https://www.linkedin.com/company/gelatops/
+- Instagram: https://www.instagram.com/gelatops.app/

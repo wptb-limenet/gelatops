@@ -3,25 +3,76 @@
   "locale": "en_GB",
   "meta.title": "gelatops — Gelato &amp; Ice Cream Business Management Software",
   "meta.description": "gelatops is the all-in-one management platform for artisan gelato and ice cream businesses. Manage recipes, food costs and margins, production planning, allergens, stock tracking, online orders and sales analytics — all in one place.",
-  "meta.keywords": "gelato management software, ice cream business software, gelato recipe management, production planning gelato, food cost calculator ice cream, gelato profit margins, allergen tracking gelato, gelato sales analytics, gelateria management",
+  "meta.keywords": "gelato management software, ice cream business software, gelato recipe management, production planning gelato, food cost calculator ice cream, gelato profit margins, allergen tracking gelato, gelato sales analytics, gelateria management, frozen dessert production planning, EU 1169/2011 allergen software",
   "meta.ogTitle": "gelatops — Gelato &amp; Ice Cream Business Management Software",
   "meta.ogDescription": "The all-in-one platform for artisan gelato makers. Recipes, food costs and margins, production planning, allergen tracking, stockpile and sales analytics — all in one place.",
   "meta.twitterTitle": "gelatops — Gelato &amp; Ice Cream Business Management Software",
   "meta.twitterDescription": "The all-in-one platform for artisan gelato makers. Recipes, costs and margins, production planning, allergen tracking, stockpile and sales analytics.",
   "jsonld.appDescription": "All-in-one management platform for artisan gelato and ice cream businesses. Manage recipes, food costs and margins, production planning, allergens, stock tracking, online orders and sales analytics.",
-  "jsonld.offerDescription": "Free plan with all features, capped at 10 production runs per month. Paid plans from €49/mo.",
-  "jsonld.faq1q": "Do I need technical knowledge to use gelatops?",
-  "jsonld.faq1a": "No. The interface is designed for gelato makers, not developers. If you can use a spreadsheet, you can use gelatops.",
-  "jsonld.faq2q": "How does the order integration with my online shop work?",
-  "jsonld.faq2a": "Your shop sends a webhook to gelatops when a customer pays. The order lands automatically in your production queue with the recipe pre-matched. We support any shop that can call a Stripe webhook.",
-  "jsonld.faq3q": "What happens when I submit a production plan?",
-  "jsonld.faq3a": "gelatops takes a snapshot of all items and current ingredient prices, writes it to your history, and clears the queue ready for new orders. The submitted plan is read-only — your shopping list is frozen in time.",
-  "jsonld.faq4q": "How does allergen tracking work?",
-  "jsonld.faq4a": "Tag each ingredient with its EU allergens once — the system covers all 14 mandatory categories under Regulation 1169/2011. Every recipe that uses the ingredient inherits the correct declaration automatically, including allergens coming through sub-recipes. Recipes with no allergens get an explicit 'contains no allergens' badge. You can print a compliant allergen sheet for any recipe directly from the app.",
-  "jsonld.faq5q": "Can I use gelatops for sorbets and vegan recipes?",
-  "jsonld.faq5a": "Yes. gelatops works for any frozen product — gelato, sorbets, vegan, milk-based or fruit-based. The recipe system is ingredient-agnostic.",
-  "jsonld.faq6q": "Is my data safe?",
-  "jsonld.faq6a": "Yes. gelatops runs on AWS with encrypted connections, automated database backups, and private infrastructure. Your recipes are your competitive advantage — we treat them accordingly.",
+  "offer.starter.name": "Starter",
+  "offer.starter.desc": "Free plan with every feature — up to 10 production runs a month, unlimited recipes, food cost and margins, allergen tracking, stockpile and sales analytics. Single user.",
+  "offer.studio.name": "Studio",
+  "offer.studio.desc": "€49/mo. Everything in Starter plus unlimited production runs, team accounts and roles, up to 5 users, and priority email support.",
+  "offer.pro.name": "Pro",
+  "offer.pro.desc": "€149/mo. Everything in Studio plus order webhook integration, multiple shop integrations, unlimited users and priority support. Label generation, smart recipe balancing and supplier auto-ordering are coming soon.",
+  "faq.items": [
+    {
+      "q": "What is gelatops?",
+      "a": "gelatops is an all-in-one management platform for artisan gelato and ice cream businesses. It centralises recipes, production planning, real-time food costing, EU allergen labelling, stockpile tracking, online order intake and sales analytics into a single web app — replacing the patchwork of spreadsheets, Word documents and phone calls most gelaterias rely on. It runs in any modern browser, no installation required."
+    },
+    {
+      "q": "Who is gelatops for?",
+      "a": "gelatops is built for artisan gelato makers, gelaterie, small ice-cream production labs and pastry kitchens that produce frozen desserts. It suits operations from a single-owner gelateria up to multi-shop businesses producing dozens of recipes per week. If you sell gelato, sorbet or any frozen dessert, gelatops fits your workflow."
+    },
+    {
+      "q": "Is there a free plan?",
+      "a": "Yes. The Starter plan is free with every feature, capped at 10 production runs a month, and needs no payment details. Create your account at app.gelatops.com and evaluate gelatops against your real recipes — or email hello@gelatops.com if you'd like a hand getting set up."
+    },
+    {
+      "q": "How much does gelatops cost?",
+      "a": "Pricing is simple. The Starter plan is free with every feature, capped at 10 production runs a month. Studio is €49/mo and adds unlimited production runs, team accounts and more users. Pro is €149/mo and adds order webhook integration, multiple shop integrations and priority support. You can start free at app.gelatops.com — no payment details required."
+    },
+    {
+      "q": "Do I need technical knowledge to use gelatops?",
+      "a": "No. The interface is designed for gelato makers, not developers. If you can use a spreadsheet, you can use gelatops. Onboarding takes minutes — there is nothing to install and your data syncs across any device with a browser."
+    },
+    {
+      "q": "Can gelatops replace my recipe spreadsheet?",
+      "a": "Yes — that is the most common reason gelaterias adopt gelatops. Your recipes move from scattered spreadsheets to a single versioned database with per-litre ingredient amounts, automatic cost recalculation when prices change, and inherited allergen declarations. You can import your existing recipes manually or with our help during onboarding."
+    },
+    {
+      "q": "How does food cost calculation work in gelatops?",
+      "a": "Every recipe shows live cost at 1 L, 5 L, 10 L and 15 L based on current ingredient prices. Update an ingredient price in one place and every recipe that uses it recalculates automatically. When you submit a production plan, the prices are frozen in a snapshot so your shopping list and margin are locked at submission time, even if prices change later."
+    },
+    {
+      "q": "How does the order integration with my online shop work?",
+      "a": "Your shop sends a webhook to gelatops when a customer pays. The order lands automatically in your production queue with the recipe pre-matched, so there is no double entry. We support any shop that can call a Stripe webhook — including Stripe Checkout, custom Stripe-based shops, and most platforms that expose webhook events."
+    },
+    {
+      "q": "Does gelatops integrate with WooCommerce, Shopify or a custom shop?",
+      "a": "If your shop can fire a Stripe webhook, gelatops integrates with it. WooCommerce and Shopify both support webhook outputs that we can consume, and any custom shop using Stripe Checkout or Stripe Elements works out of the box. For non-Stripe setups, get in touch and we will assess whether a custom adapter is feasible."
+    },
+    {
+      "q": "What happens when I submit a production plan?",
+      "a": "gelatops takes a snapshot of all items and current ingredient prices, writes it to your history, and clears the queue ready for new orders. The submitted plan is read-only — your shopping list and total cost are frozen at submission time. From the frozen plan you can print it, export it to CSV, or tick items off as you buy."
+    },
+    {
+      "q": "Is gelatops compliant with EU Regulation 1169/2011?",
+      "a": "gelatops covers all 14 mandatory allergen categories under EU Regulation 1169/2011 and is built so legal allergen disclosure on every recipe is automatic. Tag each ingredient with its allergens once and every recipe inherits the correct declaration, including allergens that come through sub-recipes. Compliance ultimately depends on the data you enter, but the system is designed so missed declarations become structurally hard."
+    },
+    {
+      "q": "Can gelatops handle sub-recipes and inherited allergens?",
+      "a": "Yes. A recipe can include other recipes as ingredients (sub-recipes), and any allergens declared on a sub-recipe automatically propagate to the parent. If you change a sub-recipe — adding pistachio to your praline base, for example — every parent recipe immediately reflects the new allergen list. Recipes with no allergens get an explicit 'contains no allergens' badge."
+    },
+    {
+      "q": "Can I use gelatops for sorbets and vegan recipes?",
+      "a": "Yes. gelatops works for any frozen product — gelato, sorbets, vegan, milk-based, fruit-based and combinations. The recipe system is ingredient-agnostic, so a vegan sorbet, a dairy gelato, or a fior di latte all use the same tooling."
+    },
+    {
+      "q": "Is my data safe?",
+      "a": "Yes. gelatops runs on AWS with encrypted connections, automated database backups and private infrastructure. Your recipes are your competitive advantage — we treat them accordingly. We never share recipe data with third parties, and you can request a full export of your data at any time."
+    }
+  ],
   "nav.features": "Features",
   "nav.howItWorks": "How It Works",
   "nav.pricing": "Pricing",
@@ -129,33 +180,21 @@
   "pricing.studio.period": "/mo",
   "pricing.studio.f1": "Everything in Starter",
   "pricing.studio.f2": "Unlimited production runs",
-  "pricing.studio.f3": "Order webhook integration (1 shop)",
-  "pricing.studio.f4": "Team accounts &amp; roles",
-  "pricing.studio.f5": "Up to 5 users",
-  "pricing.studio.f6": "Priority email support",
+  "pricing.studio.f3": "Team accounts &amp; roles",
+  "pricing.studio.f4": "Up to 5 users",
+  "pricing.studio.f5": "Priority email support",
   "pricing.pro.name": "Pro",
   "pricing.pro.amount": "€149",
   "pricing.pro.period": "/mo",
   "pricing.pro.f1": "Everything in Studio",
-  "pricing.pro.f2": "Multiple shop integrations",
-  "pricing.pro.f3": "Unlimited users",
-  "pricing.pro.f4": "Priority support",
-  "pricing.pro.f5": "Label generation <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(coming soon)</em>",
-  "pricing.pro.f6": "Smart recipe balancing <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(coming soon)</em>",
-  "pricing.pro.f7": "Supplier integration &amp; auto-ordering <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(coming soon)</em>",
+  "pricing.pro.f2": "Order webhook integration",
+  "pricing.pro.f3": "Multiple shop integrations",
+  "pricing.pro.f4": "Unlimited users",
+  "pricing.pro.f5": "Priority support",
+  "pricing.pro.f6": "Label generation <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(coming soon)</em>",
+  "pricing.pro.f7": "Smart recipe balancing <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(coming soon)</em>",
+  "pricing.pro.f8": "Supplier integration &amp; auto-ordering <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(coming soon)</em>",
   "faq.heading": "Frequently asked questions",
-  "faq1.q": "Do I need technical knowledge to use gelatops?",
-  "faq1.a": "No. The interface is designed for gelato makers, not developers. If you can use a spreadsheet, you can use gelatops.",
-  "faq2.q": "How does the order integration with my online shop work?",
-  "faq2.a": "Your shop sends a webhook to gelatops when a customer pays. The order lands automatically in your production queue with the recipe pre-matched. We support any shop that can call a Stripe webhook.",
-  "faq3.q": "What happens when I submit a production plan?",
-  "faq3.a": "gelatops takes a snapshot of all items and current ingredient prices, writes it to your history, and clears the queue ready for new orders. The submitted plan is read-only — your shopping list is frozen in time.",
-  "faq4.q": "How does allergen tracking work?",
-  "faq4.a": "Tag each ingredient with its EU allergens once — the system covers all 14 mandatory categories under Regulation 1169/2011. Every recipe that uses the ingredient inherits the correct declaration automatically, including allergens coming through sub-recipes. Recipes with no allergens get an explicit 'contains no allergens' badge. You can print a compliant allergen sheet for any recipe directly from the app.",
-  "faq5.q": "Can I use gelatops for sorbets and vegan recipes?",
-  "faq5.a": "Yes. gelatops works for any frozen product — gelato, sorbets, vegan, milk-based or fruit-based. The recipe system is ingredient-agnostic.",
-  "faq6.q": "Is my data safe?",
-  "faq6.a": "Yes. gelatops runs on AWS with encrypted connections, automated database backups, and private infrastructure. Your recipes are your competitive advantage — we treat them accordingly.",
   "cta.heading": "Ready to run a better gelateria?",
   "cta.lead": "Create your free account in minutes — or get in touch and we'll help you get set up.",
   "cta.button": "Email us at hello@gelatops.com",
