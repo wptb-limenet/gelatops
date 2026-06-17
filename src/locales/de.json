@@ -10,7 +10,7 @@
   "meta.twitterDescription": "Die All-in-One-Plattform für handwerkliche Gelato-Hersteller. Rezepte, Kosten und Margen, Produktionsplanung, Allergen-Tracking, Vorratsverwaltung und Verkaufsanalysen.",
   "jsonld.appDescription": "All-in-One-Management-Plattform für handwerkliche Gelato- und Eiscreme-Betriebe. Verwalten Sie Rezepte, Lebensmittelkosten und Margen, Produktionsplanung, Allergene, Lagerbestand, Online-Bestellungen und Verkaufsanalysen.",
   "offer.starter.name": "Starter",
-  "offer.starter.desc": "Kostenloser Plan mit allen Funktionen — bis zu 10 Produktionsläufe pro Monat, unbegrenzte Rezepte, Kosten und Margen, Allergen-Tracking, Vorratsverwaltung und Verkaufsanalysen. Einzelner Benutzer.",
+  "offer.starter.desc": "Kostenlos für Ihre ersten 10 Produktionsläufe, mit allen Funktionen und ohne Zahlungsdaten — danach nutzungsbasiert. Unbegrenzte Rezepte, Kosten und Margen, Allergen-Tracking, Vorratsverwaltung und Verkaufsanalysen. Einzelner Benutzer.",
   "offer.studio.name": "Studio",
   "offer.studio.desc": "49 €/Monat. Alles aus Starter plus unbegrenzte Produktionsläufe, Team-Konten und Rollen, bis zu 5 Benutzer und vorrangiger E-Mail-Support.",
   "offer.pro.name": "Pro",
@@ -26,11 +26,15 @@
     },
     {
       "q": "Gibt es einen kostenlosen Plan?",
-      "a": "Ja. Der Starter-Plan ist kostenlos mit allen Funktionen, begrenzt auf 10 Produktionsläufe pro Monat, und erfordert keine Zahlungsdaten. Erstellen Sie Ihr Konto auf app.gelatops.com und testen Sie gelatops mit Ihren echten Rezepten — oder schreiben Sie uns an hello@gelatops.com, wenn Sie Hilfe beim Einstieg möchten."
+      "a": "Ja. Ihre ersten 10 Produktionsläufe sind kostenlos, mit allen Funktionen und ohne Zahlungsdaten. Danach ist gelatops nutzungsbasiert — Sie wechseln zu einem Bezahlplan, werden aber nur für die Monate berechnet, in denen Sie es tatsächlich nutzen. Erstellen Sie Ihr Konto auf app.gelatops.com oder schreiben Sie uns an hello@gelatops.com, wenn Sie Hilfe beim Einstieg möchten."
     },
     {
       "q": "Was kostet gelatops?",
-      "a": "Die Preise sind einfach. Der Starter-Plan ist kostenlos mit allen Funktionen, begrenzt auf 10 Produktionsläufe pro Monat. Studio kostet 49 €/Monat und fügt unbegrenzte Produktionsläufe, Team-Konten und mehr Benutzer hinzu. Pro kostet 149 €/Monat und fügt Bestell-Webhook-Integration, mehrere Shop-Integrationen und vorrangigen Support hinzu. Sie können kostenlos auf app.gelatops.com starten — ohne Zahlungsdaten."
+      "a": "Die Preise sind einfach und nutzungsbasiert. Ihre ersten 10 Produktionsläufe sind kostenlos. Danach kostet Studio 49 €/Monat und Pro 149 €/Monat — aber Sie werden nur für die Monate berechnet, in denen Sie gelatops tatsächlich nutzen (keine Nutzung in 30 Tagen bedeutet keine Kosten). Starten Sie kostenlos auf app.gelatops.com, ohne Zahlungsdaten."
+    },
+    {
+      "q": "Kann ich eine Demo von gelatops bekommen?",
+      "a": "Ja. Wir führen Sie live durch gelatops und beantworten Ihre Fragen — auf Englisch, Schwedisch, Französisch, Deutsch oder Spanisch. Schreiben Sie an hello@gelatops.com und wir vereinbaren einen Termin, der Ihnen passt."
     },
     {
       "q": "Brauche ich technische Kenntnisse, um gelatops zu nutzen?",
@@ -105,11 +109,9 @@
   "mockup.revenue": "Umsatz",
   "mockup.prodCost": "Produktionskosten",
   "mockup.grossProfit": "Bruttogewinn",
-  "mockup.priceAnalysis": "Preisanalyse",
+  "mockup.marginTitle": "Bruttomarge · Ziel 60%",
   "mockup.retailPricing": "Verkaufspreise",
   "mockup.scoop": "Kugel",
-  "mockup.tierIdeal": "Ideal",
-  "mockup.tierPremium": "Premium",
   "hero.scroll": "Scrollen",
   "pain.heading": "Kommt Ihnen das bekannt vor?",
   "pain.subheading": "Eine Eisdiele ohne die richtigen Werkzeuge zu führen bedeutet...",
@@ -130,7 +132,7 @@
   "feature1.title": "Rezeptverwaltung",
   "feature1.desc": "Erstellen und verwalten Sie alle Ihre Eis- und Sorbetrezepte. Legen Sie Zutatenmengen pro Liter fest, verfolgen Sie, welche Rezepte welche Zutaten verwenden, und halten Sie alles versioniert und organisiert.",
   "feature2.title": "Echtzeit-Lebensmittelkosten",
-  "feature2.desc": "Sehen Sie die Kosten jedes Rezepts für 1 L, 5 L, 10 L und 15 L sofort. Aktualisieren Sie Zutatpreise einmal und jedes Rezept wird automatisch neu berechnet. Kennen Sie Ihre Margen, bevor Sie produzieren.",
+  "feature2.desc": "Sehen Sie die Kosten jedes Rezepts in den Chargengrößen, mit denen Sie wirklich arbeiten — legen Sie eigene fest oder nutzen Sie 1 L, 5 L, 10 L und 15 L — sofort neu berechnet. Aktualisieren Sie einen Zutatpreis einmal und jedes Rezept aktualisiert sich automatisch. Kennen Sie Ihre Margen, bevor Sie produzieren.",
   "feature3.title": "Produktionsplanung",
   "feature3.desc": "Erstellen Sie Produktionspläne manuell oder lassen Sie eingehende Bestellungen diese automatisch befüllen. Reichen Sie einen Plan ein und erhalten Sie eine fixierte Einkaufsliste mit zu diesem Zeitpunkt festgeschriebenen Preisen.",
   "feature4.title": "Intelligente Einkaufslisten",
@@ -161,14 +163,14 @@
   "how4.title": "Einreichen und bestellen",
   "how4.desc": "Reichen Sie den Plan ein. Erhalten Sie eine fixierte Einkaufsliste mit festgeschriebenen Mengen und Preisen. Drucken Sie sie, exportieren Sie sie als CSV, haken Sie Positionen beim Einkauf ab. Machen Sie Gelato.",
   "pricing.heading": "Einfache, ehrliche Preise",
-  "pricing.subheading": "Starten Sie kostenlos mit allen Funktionen. Wechseln Sie erst, wenn Sie mehr brauchen.",
+  "pricing.subheading": "Starten Sie kostenlos mit allen Funktionen. Nach Ihren ersten 10 Produktionsläufen zahlen Sie nutzungsbasiert — nur für die Monate, in denen Sie gelatops verwenden.",
   "pricing.ctaFree": "Kostenlos starten",
   "pricing.ctaStart": "Loslegen",
   "pricing.starter.badge": "Kostenlos · alle Funktionen",
   "pricing.starter.name": "Starter",
   "pricing.starter.amount": "Kostenlos",
   "pricing.starter.f1": "Alle Funktionen inklusive",
-  "pricing.starter.f2": "Bis zu 10 Produktionsläufe / Monat",
+  "pricing.starter.f2": "Bis zu 10 Produktionsläufe",
   "pricing.starter.f3": "Unbegrenzte Rezepte &amp; Zutaten",
   "pricing.starter.f4": "Kosten, Margen &amp; Preisanalyse",
   "pricing.starter.f5": "Allergen-Tracking &amp; Datenblätter",
@@ -196,7 +198,7 @@
   "pricing.pro.f8": "Lieferantenintegration &amp; automatische Bestellung <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(demnächst verfügbar)</em>",
   "faq.heading": "Häufig gestellte Fragen",
   "cta.heading": "Bereit, Ihre Eisdiele besser zu führen?",
-  "cta.lead": "Erstellen Sie in wenigen Minuten Ihr kostenloses Konto — oder nehmen Sie Kontakt auf und wir helfen Ihnen bei der Einrichtung.",
+  "cta.lead": "Erstellen Sie in wenigen Minuten Ihr kostenloses Konto — oder buchen Sie eine Demo auf Englisch, Schwedisch, Französisch, Deutsch oder Spanisch unter hello@gelatops.com.",
   "cta.button": "Schreiben Sie uns an hello@gelatops.com",
   "cta.note": "Wir antworten innerhalb von 24 Stunden.",
   "footer.brandDesc": "Die Management-Plattform für handwerkliche Gelato-Hersteller.",

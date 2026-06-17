@@ -677,34 +677,64 @@
     .mockup-bar__col--cost { background: rgba(1,137,211,0.30); }
     .mockup-bar__col--rev { background: var(--teal); }
 
-    .mockup-row__meta {
-      display: inline-flex;
+    .mockup-mrow {
+      display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
     }
 
-    .mockup-chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px 8px;
+    .mockup-mrow:last-child { border-bottom: none; }
+
+    .mockup-mrow__name {
+      flex: 0 0 84px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .mockup-mbar {
+      position: relative;
+      flex: 1;
+      height: 7px;
       border-radius: 999px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 600;
+      background: rgba(11,31,58,0.08);
+      overflow: hidden;
     }
 
-    .chip--ideal { background: rgba(0,180,100,0.12); color: #007a46; }
-    .chip--cheap { background: rgba(0,201,208,0.15); color: #007d83; }
-    .chip--premium { background: rgba(251,146,60,0.15); color: #b45309; }
+    .mockup-mbar__fill {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 999px;
+    }
+
+    .mockup-mbar__tick {
+      position: absolute;
+      left: 60%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(11,31,58,0.5);
+    }
+
+    .fill--good { background: #34c46e; }
+    .fill--bad { background: #f0686b; }
 
     .mockup-pct {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 700;
       font-size: 0.75rem;
+      flex: 0 0 auto;
+      min-width: 30px;
+      text-align: right;
     }
 
     .pct--good { color: #007a46; }
-    .pct--warn { color: #b45309; }
+    .pct--bad { color: #c0392b; }
 
     .hero__scroll {
       display: none;
@@ -1673,24 +1703,28 @@
               <div class="mockup-card mockup-card--slide">
                 <div class="mockup-widget">
                   <div class="mockup-widget__header mockup-widget__header--blue">
-                    <span class="mockup-widget__title">{{mockup.priceAnalysis}}</span>
+                    <span class="mockup-widget__title">{{mockup.marginTitle}}</span>
                   </div>
                   <div class="mockup-widget__body">
-                    <div class="mockup-row">
-                      <span class="mockup-row__label">Fior di latte</span>
-                      <span class="mockup-row__meta"><span class="mockup-chip chip--ideal">{{mockup.tierIdeal}}</span><span class="mockup-pct pct--good">68%</span></span>
+                    <div class="mockup-mrow">
+                      <span class="mockup-mrow__name">Stracciatella</span>
+                      <span class="mockup-mbar"><span class="mockup-mbar__fill fill--good" style="width:74%"></span><span class="mockup-mbar__tick"></span></span>
+                      <span class="mockup-pct pct--good">74%</span>
                     </div>
-                    <div class="mockup-row">
-                      <span class="mockup-row__label">Pistachio</span>
-                      <span class="mockup-row__meta"><span class="mockup-chip chip--premium">{{mockup.tierPremium}}</span><span class="mockup-pct pct--good">54%</span></span>
+                    <div class="mockup-mrow">
+                      <span class="mockup-mrow__name">Pistachio</span>
+                      <span class="mockup-mbar"><span class="mockup-mbar__fill fill--good" style="width:66%"></span><span class="mockup-mbar__tick"></span></span>
+                      <span class="mockup-pct pct--good">66%</span>
                     </div>
-                    <div class="mockup-row">
-                      <span class="mockup-row__label">Stracciatella</span>
-                      <span class="mockup-row__meta"><span class="mockup-chip chip--ideal">{{mockup.tierIdeal}}</span><span class="mockup-pct pct--good">71%</span></span>
+                    <div class="mockup-mrow">
+                      <span class="mockup-mrow__name">Fior di latte</span>
+                      <span class="mockup-mbar"><span class="mockup-mbar__fill fill--good" style="width:60%"></span><span class="mockup-mbar__tick"></span></span>
+                      <span class="mockup-pct pct--good">60%</span>
                     </div>
-                    <div class="mockup-row">
-                      <span class="mockup-row__label">Dark Chocolate</span>
-                      <span class="mockup-row__meta"><span class="mockup-chip chip--premium">{{mockup.tierPremium}}</span><span class="mockup-pct pct--warn">49%</span></span>
+                    <div class="mockup-mrow">
+                      <span class="mockup-mrow__name">Dark Chocolate</span>
+                      <span class="mockup-mbar"><span class="mockup-mbar__fill fill--bad" style="width:38%"></span><span class="mockup-mbar__tick"></span></span>
+                      <span class="mockup-pct pct--bad">38%</span>
                     </div>
                   </div>
                 </div>

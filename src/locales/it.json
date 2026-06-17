@@ -10,7 +10,7 @@
   "meta.twitterDescription": "La piattaforma all-in-one per i gelatieri artigianali. Ricette, costi e margini, pianificazione della produzione, tracciamento allergeni, gestione scorte e analisi delle vendite.",
   "jsonld.appDescription": "Piattaforma gestionale all-in-one per gelaterie artigianali e attività di gelato. Gestisci ricette, costi alimentari e margini, pianificazione della produzione, allergeni, gestione scorte, ordini online e analisi delle vendite.",
   "offer.starter.name": "Starter",
-  "offer.starter.desc": "Piano gratuito con tutte le funzionalità — fino a 10 cicli di produzione al mese, ricette illimitate, costi e margini, tracciamento allergeni, gestione scorte e analisi delle vendite. Utente singolo.",
+  "offer.starter.desc": "Gratis per i primi 10 cicli di produzione, con tutte le funzionalità e senza dati di pagamento — poi paghi in base al consumo. Ricette illimitate, costi e margini, tracciamento allergeni, gestione scorte e analisi delle vendite. Utente singolo.",
   "offer.studio.name": "Studio",
   "offer.studio.desc": "€49/mese. Tutto incluso in Starter più cicli di produzione illimitati, account team e ruoli, fino a 5 utenti e supporto prioritario via email.",
   "offer.pro.name": "Pro",
@@ -26,11 +26,15 @@
     },
     {
       "q": "C’è un piano gratuito?",
-      "a": "Sì. Il piano Starter è gratuito con tutte le funzionalità, limitato a 10 cicli di produzione al mese, e non richiede dati di pagamento. Crea il tuo account su app.gelatops.com e prova gelatops sulle tue ricette reali — oppure scrivici a hello@gelatops.com se vuoi una mano per iniziare."
+      "a": "Sì. I tuoi primi 10 cicli di produzione sono gratuiti, con tutte le funzionalità e senza dati di pagamento. Dopodiché gelatops è a consumo — passi a un piano a pagamento ma vieni addebitato solo per i mesi in cui lo usi davvero. Crea il tuo account su app.gelatops.com, oppure scrivici a hello@gelatops.com se vuoi una mano per iniziare."
     },
     {
       "q": "Quanto costa gelatops?",
-      "a": "I prezzi sono semplici. Il piano Starter è gratuito con tutte le funzionalità, limitato a 10 cicli di produzione al mese. Studio costa €49/mese e aggiunge cicli di produzione illimitati, account team e più utenti. Pro costa €149/mese e aggiunge integrazione ordini via webhook, integrazioni con più negozi e supporto prioritario. Puoi iniziare gratis su app.gelatops.com — senza dati di pagamento."
+      "a": "I prezzi sono semplici e a consumo. I primi 10 cicli di produzione sono gratuiti. Dopodiché, Studio costa €49/mese e Pro €149/mese — ma vieni addebitato solo per i mesi in cui usi davvero gelatops (nessun utilizzo in 30 giorni significa nessun addebito). Inizia gratis su app.gelatops.com, senza dati di pagamento."
+    },
+    {
+      "q": "Posso avere una demo di gelatops?",
+      "a": "Sì. Ti guidiamo dal vivo attraverso gelatops e rispondiamo alle tue domande — in inglese, svedese, francese, tedesco o spagnolo. Scrivi a hello@gelatops.com e fisseremo una sessione nell’orario che preferisci."
     },
     {
       "q": "Servono competenze tecniche per usare gelatops?",
@@ -105,11 +109,9 @@
   "mockup.revenue": "Ricavi",
   "mockup.prodCost": "Costo di produzione",
   "mockup.grossProfit": "Margine lordo",
-  "mockup.priceAnalysis": "Analisi prezzi",
+  "mockup.marginTitle": "Margine lordo · obiettivo 60%",
   "mockup.retailPricing": "Prezzi di vendita",
   "mockup.scoop": "Pallina",
-  "mockup.tierIdeal": "Ideale",
-  "mockup.tierPremium": "Premium",
   "hero.scroll": "Scorri",
   "pain.heading": "Ti suona familiare?",
   "pain.subheading": "Gestire una gelateria senza gli strumenti giusti significa...",
@@ -130,7 +132,7 @@
   "feature1.title": "Gestione ricette",
   "feature1.desc": "Crea e gestisci tutte le tue ricette di gelato e sorbetto. Imposta le quantità degli ingredienti per litro, monitora quali ricette usano quali ingredienti e tieni tutto versionato e organizzato.",
   "feature2.title": "Costi alimentari in tempo reale",
-  "feature2.desc": "Visualizza il costo di ogni ricetta a 1L, 5L, 10L e 15L istantaneamente. Aggiorna i prezzi degli ingredienti una volta e ogni ricetta si ricalcola automaticamente. Conosci i tuoi margini prima di produrre.",
+  "feature2.desc": "Vedi il costo di ogni ricetta nelle dimensioni dei lotti con cui lavori davvero — imposta le tue, oppure usa 1L, 5L, 10L e 15L — ricalcolato all’istante. Aggiorna il prezzo di un ingrediente una volta e ogni ricetta si aggiorna automaticamente. Conosci i tuoi margini prima di produrre.",
   "feature3.title": "Pianificazione della produzione",
   "feature3.desc": "Crea piani di produzione manualmente o lascia che gli ordini in arrivo li popolino automaticamente. Invia un piano e ottieni una lista della spesa congelata con i prezzi bloccati a quel momento.",
   "feature4.title": "Liste della spesa intelligenti",
@@ -161,14 +163,14 @@
   "how4.title": "Invia e ordina",
   "how4.desc": "Invia il piano. Ottieni una lista della spesa congelata con quantità e prezzi bloccati. Stampala, esportala in CSV, spunta gli articoli mentre acquisti. Fai il gelato.",
   "pricing.heading": "Prezzi semplici e trasparenti",
-  "pricing.subheading": "Inizia gratis con tutte le funzionalità. Passa a un piano superiore solo quando ne hai bisogno.",
+  "pricing.subheading": "Inizia gratis con tutte le funzionalità. Dopo i primi 10 cicli di produzione paghi in base al consumo — addebitato solo per i mesi in cui usi gelatops.",
   "pricing.ctaFree": "Inizia gratis",
   "pricing.ctaStart": "Inizia ora",
   "pricing.starter.badge": "Gratis · tutte le funzionalità",
   "pricing.starter.name": "Starter",
   "pricing.starter.amount": "Gratuito",
   "pricing.starter.f1": "Tutte le funzionalità incluse",
-  "pricing.starter.f2": "Fino a 10 cicli di produzione / mese",
+  "pricing.starter.f2": "Fino a 10 cicli di produzione",
   "pricing.starter.f3": "Ricette &amp; ingredienti illimitati",
   "pricing.starter.f4": "Costi, margini &amp; analisi prezzi",
   "pricing.starter.f5": "Tracciamento allergeni &amp; schede",
@@ -196,7 +198,7 @@
   "pricing.pro.f8": "Integrazione fornitori &amp; ordini automatici <em style=\"font-style:normal;font-size:0.8em;opacity:0.7\">(in arrivo)</em>",
   "faq.heading": "Domande frequenti",
   "cta.heading": "Pronto a gestire meglio la tua gelateria?",
-  "cta.lead": "Crea il tuo account gratuito in pochi minuti — o contattaci e ti aiuteremo a iniziare.",
+  "cta.lead": "Crea il tuo account gratuito in pochi minuti — oppure prenota una demo in inglese, svedese, francese, tedesco o spagnolo scrivendo a hello@gelatops.com.",
   "cta.button": "Scrivici a hello@gelatops.com",
   "cta.note": "Rispondiamo entro 24 ore.",
   "footer.brandDesc": "La piattaforma gestionale per i gelatieri artigianali.",
