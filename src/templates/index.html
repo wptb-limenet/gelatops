@@ -511,6 +511,31 @@
       display: none;
     }
 
+    .hero__mockup-stack {
+      display: grid;
+    }
+
+    .hero__mockup-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .hero__mockup-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .hero__mockup-dot.is-active {
+      background: var(--teal);
+      transform: scale(1.25);
+    }
+
     .mockup-card {
       background: var(--white);
       border-radius: 14px;
@@ -519,6 +544,19 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+    }
+
+    .mockup-card--slide {
+      grid-area: 1 / 1;
+      align-self: start;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .mockup-card--slide.is-active {
+      opacity: 1;
+      visibility: visible;
     }
 
     .mockup-widget {
@@ -616,6 +654,58 @@
       background: rgba(1,137,211,0.1);
     }
 
+    .mockup-bars {
+      display: flex;
+      align-items: stretch;
+      gap: 6px;
+      height: 72px;
+      padding-top: 6px;
+    }
+
+    .mockup-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 2px;
+    }
+
+    .mockup-bar__col {
+      width: 100%;
+      border-radius: 3px;
+    }
+
+    .mockup-bar__col--cost { background: rgba(1,137,211,0.30); }
+    .mockup-bar__col--rev { background: var(--teal); }
+
+    .mockup-row__meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mockup-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+
+    .chip--ideal { background: rgba(0,180,100,0.12); color: #007a46; }
+    .chip--cheap { background: rgba(0,201,208,0.15); color: #007d83; }
+    .chip--premium { background: rgba(251,146,60,0.15); color: #b45309; }
+
+    .mockup-pct {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    .pct--good { color: #007a46; }
+    .pct--warn { color: #b45309; }
+
     .hero__scroll {
       display: none;
       position: absolute;
@@ -710,9 +800,15 @@
     }
 
     .pain-card__icon {
-      font-size: 1.5rem;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: block;
+      line-height: 0;
+      color: var(--teal);
+    }
+
+    .pain-card__icon svg {
+      width: 26px;
+      height: 26px;
     }
 
     .pain-card__title {
@@ -778,9 +874,15 @@
     }
 
     .feature-card__icon {
-      font-size: 2.5rem;
       margin-bottom: 16px;
       display: block;
+      line-height: 0;
+      color: var(--teal);
+    }
+
+    .feature-card__icon svg {
+      width: 38px;
+      height: 38px;
     }
 
     .feature-card__title {
@@ -962,26 +1064,6 @@
       margin-bottom: 20px;
     }
 
-    .pricing__disclaimer {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-
-    .pricing__disclaimer-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(0,201,208,0.12);
-      color: var(--text-dark);
-      border: 1px solid rgba(0,201,208,0.4);
-      padding: 8px 20px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      text-align: center;
-    }
-
     .pricing__cards {
       display: flex;
       flex-direction: column;
@@ -1120,13 +1202,6 @@
 
     @media (hover: hover) {
       .pricing-card__btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
-    }
-
-    .pricing__note {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 24px;
     }
 
     @media (min-width: 768px) {
@@ -1432,7 +1507,8 @@
           <li><a href="{{basePath}}#pricing" class="navbar__link">{{nav.pricing}}</a></li>
           <li><a href="{{basePath}}#faq" class="navbar__link">{{nav.faq}}</a></li>
         </ul>
-        <a href="mailto:hello@gelatops.com" class="navbar__cta">{{nav.getInTouch}}</a>
+        <a href="https://app.gelatops.com" class="navbar__link">{{nav.login}}</a>
+        <a href="https://app.gelatops.com/signup" class="navbar__cta">{{nav.signup}}</a>
         <div class="navbar__lang" aria-label="Language">
           {{langSwitcher}}
         </div>
@@ -1461,7 +1537,8 @@
           <li><a href="{{basePath}}#pricing" class="navbar__mobile-link">{{nav.pricing}}</a></li>
           <li><a href="{{basePath}}#faq" class="navbar__mobile-link">{{nav.faq}}</a></li>
         </ul>
-        <a href="mailto:hello@gelatops.com" class="navbar__mobile-cta">{{nav.getInTouch}}</a>
+        <a href="https://app.gelatops.com" class="navbar__mobile-link">{{nav.login}}</a>
+        <a href="https://app.gelatops.com/signup" class="navbar__mobile-cta">{{nav.signup}}</a>
         <div class="navbar__mobile-lang" aria-label="Language">
           {{langSwitcher}}
         </div>
@@ -1487,90 +1564,162 @@
               {{hero.lead}}
             </p>
             <div class="hero__ctas">
-              <a href="mailto:hello@gelatops.com" class="btn btn--primary">{{hero.ctaPrimary}}</a>
+              <a href="https://app.gelatops.com/signup" class="btn btn--primary">{{hero.ctaPrimary}}</a>
               <a href="{{basePath}}#how-it-works" class="btn btn--outline-white">{{hero.ctaSecondary}}</a>
             </div>
           </div>
 
-          <!-- Right column: Dashboard mockup -->
+          <!-- Right column: Dashboard mockup (auto-rotating) -->
           <div class="hero__mockup" aria-hidden="true">
-            <div class="mockup-card">
+            <div class="hero__mockup-stack">
 
-              <!-- Production Plan widget -->
-              <div class="mockup-widget">
-                <div class="mockup-widget__header mockup-widget__header--teal">
-                  <span class="mockup-widget__title mockup-widget__title--dark">{{mockup.productionPlan}}</span>
+              <!-- Slide A: Production plan -->
+              <div class="mockup-card mockup-card--slide is-active">
+                <div class="mockup-widget">
+                  <div class="mockup-widget__header mockup-widget__header--teal">
+                    <span class="mockup-widget__title mockup-widget__title--dark">{{mockup.productionPlan}}</span>
+                  </div>
+                  <div class="mockup-widget__body">
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">Stracciatella</span>
+                      <span class="mockup-row__badge badge--teal">10 L</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">Pistachio</span>
+                      <span class="mockup-row__badge badge--blue">5 L</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">Dark Chocolate</span>
+                      <span class="mockup-row__badge badge--teal">8 L</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">Mango Sorbet</span>
+                      <span class="mockup-row__badge badge--green">6 L</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="mockup-widget__body">
-                  <div class="mockup-row">
-                    <span class="mockup-row__label">Stracciatella</span>
-                    <span class="mockup-row__badge badge--teal">10 L</span>
+                <div class="mockup-widget">
+                  <div class="mockup-widget__header mockup-widget__header--blue">
+                    <span class="mockup-widget__title">{{mockup.costSummary}}</span>
                   </div>
-                  <div class="mockup-row">
-                    <span class="mockup-row__label">Pistachio</span>
-                    <span class="mockup-row__badge badge--blue">5 L</span>
+                  <div class="mockup-widget__body">
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.totalIngredients}}</span>
+                      <span class="mockup-row__value">€112</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.labourEstimate}}</span>
+                      <span class="mockup-row__value">€29</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.totalCostPlan}}</span>
+                      <span class="mockup-row__value">€141</span>
+                    </div>
                   </div>
-                  <div class="mockup-row">
-                    <span class="mockup-row__label">Dark Chocolate</span>
-                    <span class="mockup-row__badge badge--teal">8 L</span>
+                </div>
+                <div class="mockup-widget">
+                  <div class="mockup-widget__header mockup-widget__header--mid">
+                    <span class="mockup-widget__title">{{mockup.shoppingList}}</span>
                   </div>
-                  <div class="mockup-row">
-                    <span class="mockup-row__label">Mango Sorbet</span>
-                    <span class="mockup-row__badge badge--green">6 L</span>
+                  <div class="mockup-widget__body">
+                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.wholeMilk}}</span></div>
+                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.heavyCream}}</span></div>
+                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.casterSugar}}</span></div>
+                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.pistachios}}</span></div>
+                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.darkChocolate}}</span></div>
                   </div>
                 </div>
               </div>
 
-              <!-- Cost Summary widget -->
-              <div class="mockup-widget">
-                <div class="mockup-widget__header mockup-widget__header--blue">
-                  <span class="mockup-widget__title">{{mockup.costSummary}}</span>
-                </div>
-                <div class="mockup-widget__body">
-                  <div class="mockup-row">
-                    <span class="mockup-row__label">{{mockup.totalIngredients}}</span>
-                    <span class="mockup-row__value">€112</span>
+              <!-- Slide B: Sales vs Cost -->
+              <div class="mockup-card mockup-card--slide">
+                <div class="mockup-widget">
+                  <div class="mockup-widget__header mockup-widget__header--teal">
+                    <span class="mockup-widget__title mockup-widget__title--dark">{{mockup.salesVsCost}}</span>
                   </div>
-                  <div class="mockup-row">
-                    <span class="mockup-row__label">{{mockup.labourEstimate}}</span>
-                    <span class="mockup-row__value">€29</span>
-                  </div>
-                  <div class="mockup-row">
-                    <span class="mockup-row__label">{{mockup.totalCostPlan}}</span>
-                    <span class="mockup-row__value">€141</span>
+                  <div class="mockup-widget__body">
+                    <div class="mockup-bars">
+                      <div class="mockup-bar"><span class="mockup-bar__col mockup-bar__col--rev" style="height:26px"></span><span class="mockup-bar__col mockup-bar__col--cost" style="height:14px"></span></div>
+                      <div class="mockup-bar"><span class="mockup-bar__col mockup-bar__col--rev" style="height:34px"></span><span class="mockup-bar__col mockup-bar__col--cost" style="height:15px"></span></div>
+                      <div class="mockup-bar"><span class="mockup-bar__col mockup-bar__col--rev" style="height:30px"></span><span class="mockup-bar__col mockup-bar__col--cost" style="height:13px"></span></div>
+                      <div class="mockup-bar"><span class="mockup-bar__col mockup-bar__col--rev" style="height:42px"></span><span class="mockup-bar__col mockup-bar__col--cost" style="height:17px"></span></div>
+                      <div class="mockup-bar"><span class="mockup-bar__col mockup-bar__col--rev" style="height:38px"></span><span class="mockup-bar__col mockup-bar__col--cost" style="height:15px"></span></div>
+                      <div class="mockup-bar"><span class="mockup-bar__col mockup-bar__col--rev" style="height:50px"></span><span class="mockup-bar__col mockup-bar__col--cost" style="height:18px"></span></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <!-- Shopping List widget -->
-              <div class="mockup-widget">
-                <div class="mockup-widget__header mockup-widget__header--mid">
-                  <span class="mockup-widget__title">{{mockup.shoppingList}}</span>
-                </div>
-                <div class="mockup-widget__body">
-                  <div class="mockup-check">
-                    <div class="mockup-check__box"></div>
-                    <span>{{mockup.wholeMilk}}</span>
+                <div class="mockup-widget">
+                  <div class="mockup-widget__header mockup-widget__header--blue">
+                    <span class="mockup-widget__title">{{mockup.thisMonth}}</span>
                   </div>
-                  <div class="mockup-check">
-                    <div class="mockup-check__box"></div>
-                    <span>{{mockup.heavyCream}}</span>
-                  </div>
-                  <div class="mockup-check">
-                    <div class="mockup-check__box"></div>
-                    <span>{{mockup.casterSugar}}</span>
-                  </div>
-                  <div class="mockup-check">
-                    <div class="mockup-check__box"></div>
-                    <span>{{mockup.pistachios}}</span>
-                  </div>
-                  <div class="mockup-check">
-                    <div class="mockup-check__box"></div>
-                    <span>{{mockup.darkChocolate}}</span>
+                  <div class="mockup-widget__body">
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.revenue}}</span>
+                      <span class="mockup-row__value">€4,820</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.prodCost}}</span>
+                      <span class="mockup-row__value mockup-row__value--dark">€1,930</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.grossProfit}}</span>
+                      <span class="mockup-row__value" style="color:#007a46">€2,890 · 60%</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
+              <!-- Slide C: Margins & price analysis -->
+              <div class="mockup-card mockup-card--slide">
+                <div class="mockup-widget">
+                  <div class="mockup-widget__header mockup-widget__header--blue">
+                    <span class="mockup-widget__title">{{mockup.priceAnalysis}}</span>
+                  </div>
+                  <div class="mockup-widget__body">
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">Fior di latte</span>
+                      <span class="mockup-row__meta"><span class="mockup-chip chip--ideal">{{mockup.tierIdeal}}</span><span class="mockup-pct pct--good">68%</span></span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">Pistachio</span>
+                      <span class="mockup-row__meta"><span class="mockup-chip chip--premium">{{mockup.tierPremium}}</span><span class="mockup-pct pct--good">54%</span></span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">Stracciatella</span>
+                      <span class="mockup-row__meta"><span class="mockup-chip chip--ideal">{{mockup.tierIdeal}}</span><span class="mockup-pct pct--good">71%</span></span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">Dark Chocolate</span>
+                      <span class="mockup-row__meta"><span class="mockup-chip chip--premium">{{mockup.tierPremium}}</span><span class="mockup-pct pct--warn">49%</span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mockup-widget">
+                  <div class="mockup-widget__header mockup-widget__header--teal">
+                    <span class="mockup-widget__title mockup-widget__title--dark">{{mockup.retailPricing}}</span>
+                  </div>
+                  <div class="mockup-widget__body">
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.scoop}}</span>
+                      <span class="mockup-row__value mockup-row__value--dark">€3.50</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">500 ml</span>
+                      <span class="mockup-row__value mockup-row__value--dark">€8.00</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">1 L</span>
+                      <span class="mockup-row__value mockup-row__value--dark">€15.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="hero__mockup-dots">
+              <span class="hero__mockup-dot is-active"></span>
+              <span class="hero__mockup-dot"></span>
+              <span class="hero__mockup-dot"></span>
             </div>
           </div>
         </div>
@@ -1594,32 +1743,32 @@
         <p class="pain__subheading fade-in fade-in--delay-1">{{pain.subheading}}</p>
         <div class="pain__grid">
           <div class="pain-card fade-in fade-in--delay-1">
-            <span class="pain-card__icon" aria-hidden="true">🧮</span>
+            <span class="pain-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg></span>
             <h3 class="pain-card__title">{{pain1.title}}</h3>
             <p class="pain-card__desc">{{pain1.desc}}</p>
           </div>
           <div class="pain-card fade-in fade-in--delay-2">
-            <span class="pain-card__icon" aria-hidden="true">📋</span>
+            <span class="pain-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span>
             <h3 class="pain-card__title">{{pain2.title}}</h3>
             <p class="pain-card__desc">{{pain2.desc}}</p>
           </div>
           <div class="pain-card fade-in fade-in--delay-1">
-            <span class="pain-card__icon" aria-hidden="true">💸</span>
+            <span class="pain-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg></span>
             <h3 class="pain-card__title">{{pain3.title}}</h3>
             <p class="pain-card__desc">{{pain3.desc}}</p>
           </div>
           <div class="pain-card fade-in fade-in--delay-2">
-            <span class="pain-card__icon" aria-hidden="true">⚠️</span>
+            <span class="pain-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
             <h3 class="pain-card__title">{{pain4.title}}</h3>
             <p class="pain-card__desc">{{pain4.desc}}</p>
           </div>
           <div class="pain-card fade-in fade-in--delay-1">
-            <span class="pain-card__icon" aria-hidden="true">📦</span>
+            <span class="pain-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg></span>
             <h3 class="pain-card__title">{{pain5.title}}</h3>
             <p class="pain-card__desc">{{pain5.desc}}</p>
           </div>
           <div class="pain-card fade-in fade-in--delay-2">
-            <span class="pain-card__icon" aria-hidden="true">🏷️</span>
+            <span class="pain-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg></span>
             <h3 class="pain-card__title">{{pain6.title}}</h3>
             <p class="pain-card__desc">{{pain6.desc}}</p>
           </div>
@@ -1636,49 +1785,64 @@
         <p class="features__subheading fade-in fade-in--delay-1">{{features.subheading}}</p>
         <div class="features__grid">
           <article class="feature-card fade-in fade-in--delay-1">
-            <span class="feature-card__icon" aria-hidden="true">🍦</span>
+            <span class="feature-card__icon" aria-hidden="true" style="color:#fbbf24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span>
             <h3 class="feature-card__title">{{feature1.title}}</h3>
             <p class="feature-card__desc">{{feature1.desc}}</p>
           </article>
           <article class="feature-card fade-in fade-in--delay-2">
-            <span class="feature-card__icon" aria-hidden="true">💰</span>
+            <span class="feature-card__icon" aria-hidden="true" style="color:#4ade80"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><path d="M15 6h1v4"/><path d="m6.134 14.768.866-.5 2 3.464"/><circle cx="16" cy="8" r="6"/></svg></span>
             <h3 class="feature-card__title">{{feature2.title}}</h3>
             <p class="feature-card__desc">{{feature2.desc}}</p>
           </article>
           <article class="feature-card fade-in fade-in--delay-3">
-            <span class="feature-card__icon" aria-hidden="true">📋</span>
+            <span class="feature-card__icon" aria-hidden="true" style="color:#a78bfa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg></span>
             <h3 class="feature-card__title">{{feature3.title}}</h3>
             <p class="feature-card__desc">{{feature3.desc}}</p>
           </article>
           <article class="feature-card fade-in fade-in--delay-1">
-            <span class="feature-card__icon" aria-hidden="true">🛒</span>
+            <span class="feature-card__icon" aria-hidden="true" style="color:#34c4e3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5h8"/><path d="M13 12h8"/><path d="M13 19h8"/><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/></svg></span>
             <h3 class="feature-card__title">{{feature4.title}}</h3>
             <p class="feature-card__desc">{{feature4.desc}}</p>
           </article>
           <article class="feature-card fade-in fade-in--delay-2">
-            <span class="feature-card__icon" aria-hidden="true">🏷️</span>
+            <span class="feature-card__icon" aria-hidden="true" style="color:#5b9cf0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
             <h3 class="feature-card__title">{{feature5.title}}</h3>
             <p class="feature-card__desc">{{feature5.desc}}</p>
           </article>
           <article class="feature-card fade-in fade-in--delay-3">
-            <span class="feature-card__icon" aria-hidden="true">🔗</span>
+            <span class="feature-card__icon" aria-hidden="true" style="color:#34c4e3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16.98h-5.99c-1.1 0-1.95.94-2.48 1.9A4 4 0 0 1 2 17c.01-.7.2-1.4.57-2"/><path d="m6 17 3.13-5.78c.53-.97.1-2.18-.5-3.1a4 4 0 1 1 6.89-4.06"/><path d="m12 6 3.13 5.73C15.66 12.7 16.9 13 18 13a4 4 0 0 1 0 8"/></svg></span>
             <h3 class="feature-card__title">{{feature6.title}}</h3>
             <p class="feature-card__desc">{{feature6.desc}}</p>
           </article>
           <article class="feature-card fade-in fade-in--delay-1">
-            <span class="feature-card__icon" aria-hidden="true">⚗️</span>
+            <span class="feature-card__icon" aria-hidden="true" style="color:#fb923c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"/><path d="m7 16.5-4.74-2.85"/><path d="m7 16.5 5-3"/><path d="M7 16.5v5.17"/><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"/><path d="m17 16.5-5-3"/><path d="m17 16.5 4.74-2.85"/><path d="M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"/><path d="M12 8 7.26 5.15"/><path d="m12 8 4.74-2.85"/><path d="M12 13.5V8"/></svg></span>
             <h3 class="feature-card__title">{{feature7.title}}</h3>
             <p class="feature-card__desc">{{feature7.desc}}</p>
           </article>
           <article class="feature-card fade-in fade-in--delay-2">
-            <span class="feature-card__icon" aria-hidden="true">🏭</span>
+            <span class="feature-card__icon" aria-hidden="true" style="color:#f87171"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg></span>
             <h3 class="feature-card__title">{{feature8.title}}</h3>
             <p class="feature-card__desc">{{feature8.desc}}</p>
           </article>
           <article class="feature-card fade-in fade-in--delay-3">
-            <span class="feature-card__icon" aria-hidden="true">🧊</span>
+            <span class="feature-card__icon" aria-hidden="true" style="color:#4ade80"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
             <h3 class="feature-card__title">{{feature9.title}}</h3>
             <p class="feature-card__desc">{{feature9.desc}}</p>
+          </article>
+          <article class="feature-card fade-in fade-in--delay-1">
+            <span class="feature-card__icon" aria-hidden="true" style="color:#f87171"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
+            <h3 class="feature-card__title">{{feature10.title}}</h3>
+            <p class="feature-card__desc">{{feature10.desc}}</p>
+          </article>
+          <article class="feature-card fade-in fade-in--delay-2">
+            <span class="feature-card__icon" aria-hidden="true" style="color:#34d399"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span>
+            <h3 class="feature-card__title">{{feature11.title}}</h3>
+            <p class="feature-card__desc">{{feature11.desc}}</p>
+          </article>
+          <article class="feature-card fade-in fade-in--delay-3">
+            <span class="feature-card__icon" aria-hidden="true" style="color:#94a3b8"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+            <h3 class="feature-card__title">{{feature12.title}}</h3>
+            <p class="feature-card__desc">{{feature12.desc}}</p>
           </article>
         </div>
       </div>
@@ -1733,16 +1897,11 @@
       <div class="container">
         <h2 class="pricing__heading fade-in" id="pricing-heading">{{pricing.heading}}</h2>
         <p class="pricing__subheading fade-in fade-in--delay-1">{{pricing.subheading}}</p>
-        <div class="pricing__disclaimer fade-in fade-in--delay-2">
-          <span class="pricing__disclaimer-badge">
-            <span aria-hidden="true">💡</span> {{pricing.disclaimer}}
-          </span>
-        </div>
-
         <div class="pricing__cards">
 
-          <!-- Starter -->
-          <div class="pricing-card fade-in fade-in--delay-1">
+          <!-- Starter (free, full-featured) -->
+          <div class="pricing-card pricing-card--featured fade-in fade-in--delay-1">
+            <div class="pricing-card__popular">{{pricing.starter.badge}}</div>
             <h3 class="pricing-card__name">{{pricing.starter.name}}</h3>
             <div class="pricing-card__price">
               <span class="pricing-card__amount">{{pricing.starter.amount}}</span>
@@ -1772,13 +1931,36 @@
                 </span>
                 {{pricing.starter.f4}}
               </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {{pricing.starter.f5}}
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {{pricing.starter.f6}}
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {{pricing.starter.f7}}
+              </li>
+              <li class="pricing-card__feature">
+                <span class="pricing-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#00C9D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {{pricing.starter.f8}}
+              </li>
             </ul>
-            <a href="mailto:hello@gelatops.com" class="pricing-card__btn pricing-card__btn--navy">{{nav.getInTouch}}</a>
+            <a href="https://app.gelatops.com/signup" class="pricing-card__btn pricing-card__btn--teal">{{pricing.ctaFree}}</a>
           </div>
 
-          <!-- Studio (featured) -->
-          <div class="pricing-card pricing-card--featured fade-in fade-in--delay-2">
-            <div class="pricing-card__popular">{{pricing.mostPopular}}</div>
+          <!-- Studio -->
+          <div class="pricing-card fade-in fade-in--delay-2">
             <h3 class="pricing-card__name">{{pricing.studio.name}}</h3>
             <div class="pricing-card__price">
               <span class="pricing-card__amount">{{pricing.studio.amount}}</span>
@@ -1816,7 +1998,7 @@
                 {{pricing.studio.f5}}
               </li>
             </ul>
-            <a href="mailto:hello@gelatops.com" class="pricing-card__btn pricing-card__btn--teal">{{nav.getInTouch}}</a>
+            <a href="https://app.gelatops.com/signup" class="pricing-card__btn pricing-card__btn--navy">{{pricing.ctaStart}}</a>
           </div>
 
           <!-- Pro -->
@@ -1876,11 +2058,10 @@
                 {{pricing.pro.f8}}
               </li>
             </ul>
-            <a href="mailto:hello@gelatops.com" class="pricing-card__btn pricing-card__btn--navy">{{nav.getInTouch}}</a>
+            <a href="https://app.gelatops.com/signup" class="pricing-card__btn pricing-card__btn--navy">{{pricing.ctaStart}}</a>
           </div>
 
         </div>
-        <p class="pricing__note">{{pricing.note}}</p>
       </div>
     </section>
 
@@ -2096,6 +2277,47 @@
           localStorage.setItem('gelatops-lang', link.getAttribute('data-lang-choice'));
         });
       });
+    })();
+
+    // 6. Hero mockup auto-rotation
+    (function () {
+      var mockup = document.querySelector('.hero__mockup');
+      if (!mockup) return;
+      var slides = mockup.querySelectorAll('.mockup-card--slide');
+      var dots = mockup.querySelectorAll('.hero__mockup-dot');
+      if (slides.length < 2) return;
+
+      var current = 0;
+      var timer = null;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function show(next) {
+        var n = (next + slides.length) % slides.length;
+        slides[current].classList.remove('is-active');
+        if (dots[current]) dots[current].classList.remove('is-active');
+        current = n;
+        slides[current].classList.add('is-active');
+        if (dots[current]) dots[current].classList.add('is-active');
+      }
+
+      function start() {
+        if (reduce) return;
+        stop();
+        timer = setInterval(function () { show(current + 1); }, 4500);
+      }
+
+      function stop() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+
+      dots.forEach(function (dot, idx) {
+        dot.addEventListener('click', function () { show(idx); start(); });
+      });
+
+      mockup.addEventListener('mouseenter', stop);
+      mockup.addEventListener('mouseleave', start);
+
+      start();
     })();
   </script>
 </body>
