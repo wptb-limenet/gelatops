@@ -543,12 +543,12 @@
       padding: 20px;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 16px;
     }
 
     .mockup-card--slide {
       grid-area: 1 / 1;
-      align-self: start;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.6s ease, visibility 0.6s ease;
@@ -1645,18 +1645,6 @@
                       <span class="mockup-row__label">{{mockup.totalCostPlan}}</span>
                       <span class="mockup-row__value">€141</span>
                     </div>
-                  </div>
-                </div>
-                <div class="mockup-widget">
-                  <div class="mockup-widget__header mockup-widget__header--mid">
-                    <span class="mockup-widget__title">{{mockup.shoppingList}}</span>
-                  </div>
-                  <div class="mockup-widget__body">
-                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.wholeMilk}}</span></div>
-                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.heavyCream}}</span></div>
-                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.casterSugar}}</span></div>
-                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.pistachios}}</span></div>
-                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.darkChocolate}}</span></div>
                   </div>
                 </div>
               </div>
