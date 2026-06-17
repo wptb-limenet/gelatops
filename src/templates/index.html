@@ -652,6 +652,23 @@
       border: 2px solid var(--blue);
       flex-shrink: 0;
       background: rgba(1,137,211,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mockup-check__box--done {
+      background: var(--blue);
+    }
+
+    .mockup-check__box svg {
+      width: 9px;
+      height: 9px;
+    }
+
+    .mockup-check--done span {
+      text-decoration: line-through;
+      color: var(--text-muted);
     }
 
     .mockup-bars {
@@ -1739,9 +1756,45 @@
                 </div>
               </div>
 
+              <!-- Slide D: Shopping list -->
+              <div class="mockup-card mockup-card--slide">
+                <div class="mockup-widget">
+                  <div class="mockup-widget__header mockup-widget__header--mid">
+                    <span class="mockup-widget__title">{{mockup.shoppingList}}</span>
+                  </div>
+                  <div class="mockup-widget__body">
+                    <div class="mockup-check mockup-check--done"><div class="mockup-check__box mockup-check__box--done"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>{{mockup.wholeMilk}}</span></div>
+                    <div class="mockup-check mockup-check--done"><div class="mockup-check__box mockup-check__box--done"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>{{mockup.heavyCream}}</span></div>
+                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.casterSugar}}</span></div>
+                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.pistachios}}</span></div>
+                    <div class="mockup-check"><div class="mockup-check__box"></div><span>{{mockup.darkChocolate}}</span></div>
+                  </div>
+                </div>
+                <div class="mockup-widget">
+                  <div class="mockup-widget__header mockup-widget__header--blue">
+                    <span class="mockup-widget__title">{{mockup.toBuy}}</span>
+                  </div>
+                  <div class="mockup-widget__body">
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.itemsToBuy}}</span>
+                      <span class="mockup-row__value">12</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.inStock}}</span>
+                      <span class="mockup-row__value mockup-row__value--dark">8</span>
+                    </div>
+                    <div class="mockup-row">
+                      <span class="mockup-row__label">{{mockup.estTotal}}</span>
+                      <span class="mockup-row__value">€214</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <div class="hero__mockup-dots">
               <span class="hero__mockup-dot is-active"></span>
+              <span class="hero__mockup-dot"></span>
               <span class="hero__mockup-dot"></span>
               <span class="hero__mockup-dot"></span>
             </div>
