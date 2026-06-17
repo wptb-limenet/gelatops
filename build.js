@@ -20,6 +20,7 @@ const STATIC_ASSETS = [
   'og-image.png',
   'og-image.svg',
   'apple-touch-icon.png',
+  'favicon_32.png',
   'robots.txt',
   'llms.txt',
 ];
