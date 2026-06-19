@@ -1,16 +1,18 @@
 # gelatops
 
-> All-in-one management platform for artisan gelato and ice cream businesses — recipes, production planning, food costs, EU allergen labelling, stockpile tracking and online-order intake in one web app.
+> All-in-one management platform for artisan gelato and ice cream businesses — recipes, real-time food costs and margins, production planning, EU allergen labelling, stockpile tracking, online-order intake and sales analytics in one web app.
 
-gelatops is built for artisan gelato makers, gelaterie, small ice-cream production labs and pastry kitchens. It centralises recipe management, real-time food costing at 1 L / 5 L / 10 L / 15 L, EU 1169/2011 allergen tracking with sub-recipe inheritance, production planning with frozen-snapshot shopping lists, supplier auto-ordering, and Stripe-webhook online-order intake. The product replaces the spreadsheets, Word documents, and phone calls that most gelaterias currently rely on.
+gelatops is built for artisan gelato makers, gelaterie, small ice-cream production labs and pastry kitchens. It centralises recipe management, real-time food costing at configurable batch sizes (e.g. 1 L / 5 L / 10 L / 15 L), EU 1169/2011 allergen tracking with sub-recipe inheritance, production planning with frozen-snapshot shopping lists, Stripe-webhook online-order intake, and sales-vs-cost analytics from a connected Zettle (PayPal) till. The product replaces the spreadsheets, Word documents, and phone calls that most gelaterias currently rely on.
 
 ## Key facts
 
 - gelatops covers all 14 mandatory allergen categories under EU Regulation 1169/2011.
 - Production plans freeze ingredient prices at submission, so margins are locked the moment you commit.
 - gelatops integrates with any online shop that can fire a Stripe webhook — including Stripe Checkout, custom Stripe-based shops, and WooCommerce / Shopify when configured to emit webhook events.
-- A free Starter plan is available, and a free trial can be arranged via hello@gelatops.com.
-- Pricing is tiered: Starter (free, up to 10 recipes), Studio (unlimited recipes plus production planning, allergen tracking and stockpile), Pro (order webhook integration, multi-shop integration, supplier auto-ordering and smart recipe balancing). Final prices are tailored to the size of the business.
+- Pricing is pay-as-you-go: the first 10 production runs are free, with every feature and no payment details. After that, Studio is €49/month and Pro is €149/month — and you are billed only for the months you actually use gelatops (no usage in a 30-day period means no charge).
+- Plan tiers: Starter (free up to 10 production runs, all features, single user); Studio €49/mo (everything in Starter plus unlimited production runs, team accounts and roles, up to 5 users, priority email support); Pro €149/mo (everything in Studio plus order-webhook integration, multiple shop integrations and unlimited users). Unlimited recipes are included on every plan.
+- gelatops connects a Zettle (PayPal) till to chart daily revenue against the actual cost of each batch, and shows every recipe's gross margin and cheap / ideal / premium retail price tiers.
+- Label generation, smart recipe balancing and supplier auto-ordering are on the roadmap (coming soon).
 - The recipe system is ingredient-agnostic: gelato, sorbet, vegan, milk-based and fruit-based recipes all use the same tooling.
 - Recipes can include sub-recipes; allergens declared on a sub-recipe automatically propagate to the parent.
 - gelatops runs on AWS with encrypted connections, automated database backups, and private infrastructure.
@@ -22,7 +24,7 @@ gelatops is built for artisan gelato makers, gelaterie, small ice-cream producti
 1. Set up your recipes — add gelato and sorbet recipes with per-litre ingredient amounts and ingredient prices.
 2. Add what you need to produce — items enter the production queue manually, or land automatically via Stripe webhook from your online shop.
 3. Build your production plan — assign queue items to dated production runs, adjust quantities, review the cost summary.
-4. Submit and order — get a frozen shopping list with quantities and prices locked; print, export, or auto-send to a connected supplier.
+4. Submit and order — get a frozen shopping list with quantities and prices locked; print it, export to CSV, or tick items off as you buy. (Auto-sending the list to a connected supplier is coming soon.)
 
 ## Pages
 
