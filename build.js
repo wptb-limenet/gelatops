@@ -145,6 +145,7 @@ function replaceTokens(html, translations, locale) {
 }
 
 function buildSitemap() {
+  var lastmod = new Date().toISOString().slice(0, 10);
   var urls = LOCALES.map(function (loc) {
     var alternates = LOCALES.map(function (altLoc) {
       return '    <xhtml:link rel="alternate" hreflang="' + altLoc + '" href="' + getCanonical(altLoc) + '"/>';
@@ -153,6 +154,7 @@ function buildSitemap() {
 
     return '  <url>\n    <loc>' + getCanonical(loc) + '</loc>\n' +
       alternates.join('\n') + '\n' +
+      '    <lastmod>' + lastmod + '</lastmod>\n' +
       '    <changefreq>monthly</changefreq>\n    <priority>1.0</priority>\n  </url>';
   });
 
