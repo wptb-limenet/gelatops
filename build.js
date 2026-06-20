@@ -158,10 +158,13 @@ function buildSitemap() {
       '    <changefreq>monthly</changefreq>\n    <priority>1.0</priority>\n  </url>';
   });
 
+  var termsUrl = '  <url>\n    <loc>' + DOMAIN + '/terms.html</loc>\n' +
+    '    <lastmod>' + lastmod + '</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>';
+
   return '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n' +
     '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
-    urls.join('\n') + '\n</urlset>\n';
+    urls.join('\n') + '\n' + termsUrl + '\n</urlset>\n';
 }
 
 // --- Load all locale data once (used by helpers above) ---
@@ -198,6 +201,11 @@ LOCALES.forEach(function (locale) {
   var notFoundHtml = replaceTokens(notFoundTemplate, translations, locale);
   fs.writeFileSync(path.join(outDir, '404.html'), notFoundHtml);
 });
+
+// Terms of Use — single English page (no per-locale variants)
+console.log('  Building page: terms.html');
+var termsTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'terms.html'), 'utf8');
+fs.writeFileSync(path.join(DIST, 'terms.html'), replaceTokens(termsTemplate, LOCALE_DATA[DEFAULT_LOCALE], DEFAULT_LOCALE));
 
 // Generate sitemap
 console.log('\n  Generating sitemap.xml');

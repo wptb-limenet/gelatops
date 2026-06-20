@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{notfound.title}}</title>
-  <meta name="description" content="{{notfound.metaDesc}}">
-  <meta name="robots" content="noindex, follow">
+  <title>Terms of Use — gelatops</title>
+  <meta name="description" content="Terms of Use for gelatops, operated by I&amp;S Lyckebo AB (Sweden).">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gelatops.com/terms.html">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon_32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,81 +122,62 @@
       .navbar__brand-name { font-size: 1.25rem; }
     }
 
-    /* MAIN 404 CONTENT */
-    .not-found {
+    /* LEGAL CONTENT */
+    .legal {
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 80px 24px;
       background: var(--off-white);
-      text-align: center;
+      padding: 56px 24px 80px;
     }
 
-    .not-found__inner {
-      max-width: 480px;
+    .legal__container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 24px;
     }
 
-    .not-found__emoji {
-      font-size: 4rem;
-      display: block;
-      margin-bottom: 24px;
-      animation: melt 2.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes melt {
-      0%   { transform: translateY(0) rotate(-3deg); }
-      100% { transform: translateY(6px) rotate(3deg); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .not-found__emoji { animation: none; }
-    }
-
-    .not-found__code {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 6rem;
+    .legal__title {
+      font-size: 2rem;
       font-weight: 800;
       color: var(--navy);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
     }
 
-    .not-found__title {
-      font-size: 1.5rem;
+    .legal__updated {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .legal h2 {
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-dark);
-      margin-bottom: 12px;
+      margin: 28px 0 8px;
     }
 
-    .not-found__desc {
-      font-size: 1rem;
+    .legal p {
+      font-size: 0.95rem;
       color: var(--text-mid);
-      line-height: 1.65;
-      margin-bottom: 36px;
+      line-height: 1.7;
     }
 
-    .not-found__btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 14px 36px;
-      background: var(--blue);
-      color: var(--white);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 8px;
-      transition: filter 0.2s, transform 0.15s;
+    .legal a {
+      color: var(--blue);
+      text-decoration: underline;
     }
 
-    @media (hover: hover) {
-      .not-found__btn:hover {
-        filter: brightness(1.1);
-        transform: translateY(-1px);
-      }
+    .legal__contact {
+      margin-top: 28px;
+    }
+
+    @media (min-width: 768px) {
+      .legal { padding: 72px 24px 96px; }
+      .legal__container { padding: 48px 56px; }
+      .legal__title { font-size: 2.4rem; }
     }
 
     /* FOOTER */
@@ -319,14 +301,33 @@
     </div>
   </header>
 
-  <!-- MAIN 404 CONTENT -->
-  <main class="not-found" id="main-content">
-    <div class="not-found__inner">
-      <span class="not-found__emoji" role="img" aria-label="{{notfound.emoji}}">🍦</span>
-      <div class="not-found__code" aria-hidden="true">404</div>
-      <h1 class="not-found__title">{{notfound.heading}}</h1>
-      <p class="not-found__desc">{{notfound.desc}}</p>
-      <a href="{{basePath}}" class="not-found__btn">{{notfound.btn}}</a>
+  <!-- MAIN: TERMS -->
+  <main class="legal" id="main-content">
+    <div class="legal__container">
+      <h1 class="legal__title">Terms of Use</h1>
+      <p class="legal__updated">Last updated: 20 June 2026</p>
+
+      <p>gelatops ("the Service") is operated by <strong>I&amp;S Lyckebo AB</strong>, a company registered in Sweden ("we", "us", "our"). By creating an account or using the Service, you agree to these terms. They're intentionally short.</p>
+
+      <h2>1. The Service is under development</h2>
+      <p>gelatops is new and under active development. It is provided <strong>"as is" and "as available"</strong>, without warranties of any kind. Features may change or be removed, and the Service may be unavailable at times.</p>
+
+      <h2>2. Free use, no liability</h2>
+      <p>The Service is currently provided free of charge. To the fullest extent permitted by law, we accept <strong>no liability</strong> for any loss or damage arising from your use of (or inability to use) the Service — including lost data, lost revenue, or business interruption. You use gelatops at your own risk. Nothing here excludes liability that cannot be excluded under Swedish law.</p>
+
+      <h2>3. Your data stays yours</h2>
+      <p>Your recipes and business data belong to you. We use the data you enter <strong>solely to provide the Service to you</strong>. We do <strong>not</strong> sell, rent, share, or transfer your data to third parties, and we do not use it for advertising. We take reasonable measures to keep it secure. You can request a copy or deletion of your data at any time at <a href="mailto:hello@gelatops.com">hello@gelatops.com</a>.</p>
+
+      <h2>4. Fair use</h2>
+      <p>Please don't misuse the Service, attempt to disrupt or reverse-engineer it, or use it for anything unlawful. We may suspend accounts that do.</p>
+
+      <h2>5. Changes</h2>
+      <p>As the product evolves we may update these terms; the current version will always be on this page.</p>
+
+      <h2>6. Governing law</h2>
+      <p>These terms are governed by the laws of <strong>Sweden</strong>, and any dispute shall be subject to the exclusive jurisdiction of the Swedish courts.</p>
+
+      <p class="legal__contact">Questions? Email <a href="mailto:hello@gelatops.com">hello@gelatops.com</a>.</p>
     </div>
   </main>
 
