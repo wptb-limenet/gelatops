@@ -11,7 +11,7 @@ const LOCALES_DIR = path.join(SRC, 'locales');
 const TEMPLATES_DIR = path.join(SRC, 'templates');
 const DOMAIN = 'https://gelatops.com';
 
-const LOCALES = ['en', 'it', 'de'];
+const LOCALES = ['en', 'it', 'de', 'es'];
 const DEFAULT_LOCALE = 'en';
 
 // Static assets to copy from root to dist
@@ -117,7 +117,7 @@ function buildLangSwitcher(currentLocale) {
 function buildLangDetectScript(locale) {
   // Only inject on the default (English) page
   if (locale !== DEFAULT_LOCALE) return '';
-  return '<script>(function(){if(window.location.pathname!=="/")return;var c=localStorage.getItem("gelatops-lang");if(c==="en")return;if(c==="it"){window.location.replace("/it/");return;}if(c==="de"){window.location.replace("/de/");return;}var l=(navigator.language||"").toLowerCase();if(l.startsWith("it"))window.location.replace("/it/");else if(l.startsWith("de"))window.location.replace("/de/");})()</script>';
+  return '<script>(function(){if(window.location.pathname!=="/")return;var c=localStorage.getItem("gelatops-lang");if(c==="en")return;if(c==="it"){window.location.replace("/it/");return;}if(c==="de"){window.location.replace("/de/");return;}if(c==="es"){window.location.replace("/es/");return;}var l=(navigator.language||"").toLowerCase();if(l.startsWith("it"))window.location.replace("/it/");else if(l.startsWith("de"))window.location.replace("/de/");else if(l.startsWith("es"))window.location.replace("/es/");})()</script>';
 }
 
 function replaceTokens(html, translations, locale) {
