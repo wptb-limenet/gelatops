@@ -17,7 +17,7 @@ gelatops is built for artisan gelato makers, gelaterie, small ice-cream producti
 - Recipes can include sub-recipes; allergens declared on a sub-recipe automatically propagate to the parent.
 - gelatops runs on AWS with encrypted connections, automated database backups, and private infrastructure.
 - The product is web-only and runs in any modern browser; there is nothing to install.
-- The interface is available in English, Italian and German.
+- The interface is available in English, Italian, German and Spanish.
 
 ## How it works (4 steps)
 
